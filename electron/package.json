@@ -1,0 +1,67 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "homepage": "./",
+  "scripts": {
+    "electron:win": "electron-builder --win"
+  },
+  "author": "",
+  "license": "ISC",
+  "build": {
+    "productName": "RoseConnect",
+    "appId": "com.rose.connect",
+    "asar": true,
+    "protocols": {
+      "name": "RoseConnect",
+      "schemes": [
+        "RoseConnect"
+      ]
+    },
+    "files":[
+      {
+        "from": ".",
+        "to": ".",
+        "filter":[
+          "main.js",
+          "preload.js"
+        ]
+      },
+      {
+        "from": "dist",
+        "to": "dist",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target":  [
+        "nsis",
+        "zip"
+      ],
+      "icon": "../icons/logo.ico"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "output": "release"
+    }
+  },
+  "devDependencies": {
+    "electron-builder": "^24.13.3"
+  }
+}

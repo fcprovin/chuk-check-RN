@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const root = process.cwd();
+const root = new URL(process.cwd());
 const oldDirPath = path.join(root, 'app');
 const newDirPath = path.join(root, 'app-example');
 const newAppDirPath = path.join(root, 'app');
@@ -61,7 +61,7 @@ fs.rename(oldDirPath, newDirPath, (error) => {
       }
       console.log('app/index.tsx created.');
 
-      const layoutPath = path.join(newAppDirPath, '_layout.tsx');
+      const layoutPath = path.join(newAppDirPath, './app/_layout.tsx');
       fs.writeFile(layoutPath, layoutContent, (error) => {
         if (error) {
           return console.error(`Error creating _layout.tsx: ${error}`);
