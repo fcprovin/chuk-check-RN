@@ -26,7 +26,9 @@ function createWindow() {
       }
     },
     autoHideMenuBar: true,
-    frame: false
+    frame: false,
+    titleBarStyle: 'hiddenInset'
+    
   });
 
   mainWindow.loadFile(path.join(__dirname, './dist/index.html'));

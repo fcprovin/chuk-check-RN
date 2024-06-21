@@ -6,7 +6,7 @@
   "homepage": "./",
   "scripts": {
     "electron:win": "electron-builder --win",
-    "electron:mac": "electron-builder"
+    "electron:mac": "electron-builder build --mac"
   },
   "author": "",
   "license": "ISC",
@@ -20,11 +20,11 @@
         "RoseConnect"
       ]
     },
-    "files":[
+    "files": [
       {
         "from": ".",
         "to": ".",
-        "filter":[
+        "filter": [
           "main.js",
           "preload.js"
         ]
@@ -38,7 +38,7 @@
       }
     ],
     "win": {
-      "target":  [
+      "target": [
         "nsis",
         "zip"
       ],
@@ -46,13 +46,11 @@
     },
     "mac": {
       "target": [
-        {
-          "target": "dmg",
-          "arch": [
-            "x64"
-          ]
-        }
+        "default"
       ]
+    },
+    "dmg": {
+      "title": "RoseConnect"
     },
     "nsis": {
       "oneClick": false,
@@ -63,6 +61,7 @@
     }
   },
   "devDependencies": {
-    "electron-builder": "^24.13.3"
+    "electron-builder": "^24.13.3",
+    "electron": "^31.0.2"
   }
 }

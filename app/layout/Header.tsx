@@ -6,10 +6,12 @@ import { useSelector } from "react-redux";
 import { Remocon } from "../icons/Remocon";
 import Hoverable from "react-native-hoverable";
 import { ELECTRONHEADERBTN } from "../constants/constants";
+import { Platform } from "react-native";
 
 function Header() {
   const getOs = useSelector((state:RootState) => state.setting);
   const [maxClick, setMaxClick] = useState(false);
+  const [winMacSet, setWinMacset] = useState(false);
 
 
   const handleMouseLeave = (type:string) => {
@@ -21,10 +23,21 @@ function Header() {
                 setMaxClick( e => !e )
             }
         }
+
     }
   };
+  
 
-  console.log(maxClick)
+  useEffect(() => {
+    if(getOs.os === 'electron'){
+      if(navigator.userAgent.includes('Windows')){
+        setWinMacset(true)
+      }else{
+        setWinMacset(false)
+      }
+    }
+  },[])
+  
   return (
     <Container>
       <HeaderBtn>
@@ -32,7 +45,7 @@ function Header() {
             <Remocon size="18px" />
         </BtnBox>
         {/* 일렉트론 일 경우 창 컨트롤 영역 */}
-        {getOs.os === "electron" ? 
+        {getOs.os === "electron" && winMacSet? 
            ELECTRONHEADERBTN.map( (data, idx) => (
             <Hoverable
               key={idx}
