@@ -4,15 +4,15 @@
 
 ### 🔖 Language
 ---
-node 18
-Electron
-TypScript
-Redux
-Redux-toolkit
-expo
-React-native
-React-native-web
-Styled-components/native
+node 18<br/>
+Electron<br/>
+TypScript<br/>
+Redux<br/>
+Redux-toolkit<br/>
+expo<br/>
+React-native<br/>
+React-native-web<br/>
+Styled-components/native<br/>
 
 
 
@@ -43,7 +43,7 @@ npx expo start --tunnel
 //react-native-web 빌드
 npx expo export --platform web
 
-// dist/index.html에 절대경로를 상대경로로 수정 
+// electron/dist/index.html에 절대경로를 상대경로로 수정 
 npm run electron
 
 //win exe 배포

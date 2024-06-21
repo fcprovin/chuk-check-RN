@@ -5,7 +5,8 @@
   "main": "main.js",
   "homepage": "./",
   "scripts": {
-    "electron:win": "electron-builder --win"
+    "electron:win": "electron-builder --win",
+    "electron:mac": "electron-builder"
   },
   "author": "",
   "license": "ISC",
