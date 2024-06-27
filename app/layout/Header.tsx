@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
-import { Theme } from "../styles/type";
+import { Theme } from "../types/type";
 import { RootState } from "../redux/store/reducers";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Remocon } from "../icons/Remocon";
 import Hoverable from "react-native-hoverable";
 import { ELECTRONHEADERBTN } from "../constants/constants";
-import { Platform } from "react-native";
+import { Platform, Text } from "react-native";
+import settingSlice from "../redux/slices/setting";
 
 function Header() {
+  const dispatch = useDispatch();
   const getOs = useSelector((state:RootState) => state.setting);
   const [maxClick, setMaxClick] = useState(false);
   const [winMacSet, setWinMacset] = useState(false);
@@ -30,19 +32,34 @@ function Header() {
 
   useEffect(() => {
     if(getOs.os === 'electron'){
-      if(navigator.userAgent.includes('Windows')){
+      if(navigator.userAgent.indexOf('Windows') !== -1){
         setWinMacset(true)
       }else{
         setWinMacset(false)
       }
     }
-  },[])
+  },[getOs])
   
   return (
     <Container>
+      <LeftBox>
+        {Platform.OS === "web" ? 
+          <SideBarHideBox
+            onPress={() => {
+              dispatch(
+                settingSlice.actions.setHideSide({
+                  "hide" : !getOs.hide
+                })
+              )
+            }}
+          >
+            <HideContent hideWidth={getOs.hide} />
+          </SideBarHideBox> : null}
+      </LeftBox>
+
       <HeaderBtn>
         <BtnBox>
-            <Remocon size="18px" />
+            <Remocon width="18px" />
         </BtnBox>
         {/* 일렉트론 일 경우 창 컨트롤 영역 */}
         {getOs.os === "electron" && winMacSet? 
@@ -84,7 +101,7 @@ const Container = styled.View<Theme>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
 
 const HeaderBtn = styled.View`
@@ -106,44 +123,27 @@ const BtnBox = styled.TouchableOpacity<Theme>`
   -webkit-app-region: no-drag;
 `;
 
-// <Hoverable
-//               style={ ({hovered}) => [
-//                 {display: 'flex'},
-//                 {flexDirection: 'row'}
-//             ]}>
-//               {({hovered}) => (
-//                 <ElectControl>
+const LeftBox = styled.View`
+  padding-left: 20px;
+`
+const SideBarHideBox = styled.TouchableOpacity`
+  -webkit-app-region: no-drag;
+  width: 17px;
+  height: 17px;
+  border: 1.5px solid #eeeeee;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`
 
-//                   <BtnBox
-//                       onPress={() => handleMouseLeave('minimize')}
-//                       hovered={hovered}
-//                   >
-//                       <ElectronMini size="12px" />
-//                   </BtnBox>
-
-//                   {maxClick ? 
-//                       <BtnBox
-//                           onPress={() => handleMouseLeave('maximize')}
-//                           hovered={hovered}
-//                       >
-//                           <ElectronMiniMize size="12px" />
-//                       </BtnBox> : 
-//                       <BtnBox
-//                           onPress={() => handleMouseLeave('maximize')}
-//                           hovered={hovered}
-//                       >
-//                           <ElectronMinMax size="12px" />
-//                       </BtnBox>
-//                   }
-
-//                   <BtnBox
-//                       onPress={() => handleMouseEnter("close")}
-//                       hovered={hovered}
-//                   >
-//                       <ElectronClose size="12px" />
-//                   </BtnBox>
-
-
-//                 </ElectControl>
-//               )}
-//            </Hoverable>
+const HideContent = styled.View<Theme>`
+  transition: all .2s;
+   -webkit-app-region: no-drag;
+   width: 6px;
+   height: 17px;
+   background-color: ${(props) => props.hideWidth ? "" : "#eeeeee"};
+   border-radius: 2px 0 0 2px;
+   border: ${(props) => props.hideWidth ? "solid 1px #eeeeee" : "none"};
+`

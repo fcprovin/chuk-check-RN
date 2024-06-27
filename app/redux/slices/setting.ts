@@ -1,7 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  os : ''
+  os : '',
+  hide: false,
+  modal : false
 };
 const settingSlice = createSlice({
   name: 'setting',
@@ -10,6 +12,12 @@ const settingSlice = createSlice({
     setDeviceOs(state, action) {
         state.os = action.payload.os;
       },
+    setHideSide(state, action){
+      state.hide = action.payload.hide
+    },
+    setRoseModal(state, action){
+      state.modal = action.payload
+    },
   },
 });
 

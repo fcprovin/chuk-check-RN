@@ -1,17 +1,44 @@
 import { View } from "react-native"
 import { ElectronHeaderBtn } from "../../styles/GlobalStyle"
-import { Size } from "../../styles/type"
+import { Size } from "../../types/type"
 import { Circle, Defs, G, Path, Rect, Svg } from "react-native-svg"
+import { useSelector } from "react-redux"
+import { RootState } from "@/app/redux/store/reducers"
+import { useEffect, useState } from "react"
 
 
-export const CdIcon = ({size}:Size) => {
- 
+export const CdIcon = ({width, height}:Size) => {
+    const getPage = useSelector((state:RootState) => state.page);
+    const [visit, setVisit] = useState("#666")
+    
+    useEffect(() => {
+        if(getPage.page.current.path === "/cd"){
+            setVisit("#fff")
+        }else{
+            setVisit("#666")
+        }
+    },[getPage])
+
     return(
-        <ElectronHeaderBtn size={size}>
-            <Svg  width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <Circle cx="12" cy="12" r="10"></Circle>
-                <Circle cx="12" cy="12" r="3"></Circle>
+        <View>
+            <Svg width={width} height={height} viewBox="0 0 130 90">
+                <G id="main_icon_cd_gold" transform="translate(-476.74 225.504)">
+                    <Path id="사각형_1350" fill="none" d="M0 0H130V90H0z" transform="translate(476.74 -225.504)"/>
+                    <G id="그룹_5347">
+                        <Path id="패스_4473" fill={visit} d="M516.4-179.042a1.462 1.462 0 0 1-1.462-1.462 26.9 26.9 0 0 1 26.875-26.874 1.462 1.462 0 0 1 1.462 1.462 1.463 1.463 0 0 1-1.462 1.462 23.977 23.977 0 0 0-23.951 23.95 1.461 1.461 0 0 1-1.462 1.462z" />
+                        <Path id="패스_328" fill={visit} d="M583.755-186.82l-22.555 6.029v21.225a7.19 7.19 0 0 0-4.751-1.747c-3.755 0-6.81 2.75-6.81 6.131s3.055 6.13 6.81 6.13 6.81-2.75 6.81-6.13c0-.074-.009-.146-.012-.219a.816.816 0 0 0 .012-.121v-22.3l18.433-4.908v15.657a7.189 7.189 0 0 0-4.75-1.746c-3.756 0-6.811 2.75-6.811 6.13s3.055 6.127 6.811 6.127 6.81-2.749 6.81-6.127c0-.074-.01-.145-.013-.218a1.009 1.009 0 0 0 .013-.122z" />
+                        <G id="그룹_5346">
+                            <Path id="패스_4474" fill={visit} d="M574.944-180.933l2.9-.774q-.057-1.752-.28-3.459l-2.851.762a33.111 33.111 0 0 1 .231 3.471z" />
+                            <Path id="패스_4475" fill={visit} d="M547.715-147.9a33.245 33.245 0 0 1-5.9.536 33.175 33.175 0 0 1-33.136-33.136 33.175 33.175 0 0 1 33.138-33.138 33.193 33.193 0 0 1 31.972 24.438l2.829-.757a36.071 36.071 0 0 0-34.8-26.609 36.062 36.062 0 0 0-36.063 36.066 36.061 36.061 0 0 0 36.062 36.062 36.132 36.132 0 0 0 8.969-1.125 11.638 11.638 0 0 1-3.071-2.337z" />
+                            <Path id="패스_4476" fill={visit} d="M572.033-166.926a33.013 33.013 0 0 1-1.852 3.538 5.556 5.556 0 0 0-.047.7 5.637 5.637 0 0 0 1 3.176 35.94 35.94 0 0 0 4.775-9.227 7.063 7.063 0 0 0-3.876 1.813z" />
+                            <Path id="패스_4477" fill={visit} d="M563.262-155.182c0-.029 0-.057-.005-.085a33.145 33.145 0 0 1-9.555 5.688 7.41 7.41 0 0 0 2.75.527c3.755 0 6.81-2.748 6.81-6.13z" />
+                        </G>
+                        <Path id="패스_4478" fill={visit} d="M541.817-188.526a8.031 8.031 0 0 1 8.021 8.022 8.031 8.031 0 0 1-8.021 8.022 8.031 8.031 0 0 1-8.022-8.022 8.031 8.031 0 0 1 8.022-8.022m0-2.924a10.946 10.946 0 0 0-10.946 10.95 10.946 10.946 0 0 0 10.946 10.946 10.946 10.946 0 0 0 10.945-10.946 10.946 10.946 0 0 0-10.945-10.946z" />
+                        <Path id="패스_4479" fill={visit} d="M541.817-181.087a.583.583 0 0 1 .582.583.583.583 0 0 1-.582.583.584.584 0 0 1-.583-.583.584.584 0 0 1 .583-.583m0-2.923a3.506 3.506 0 0 0-3.507 3.506 3.507 3.507 0 0 0 3.507 3.504 3.507 3.507 0 0 0 3.506-3.507 3.506 3.506 0 0 0-3.506-3.506z" />
+                    </G>
+                </G>
             </Svg>
-        </ElectronHeaderBtn>)
+
+        </View>)
 }
 

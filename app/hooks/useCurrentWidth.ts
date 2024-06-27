@@ -5,10 +5,10 @@ import { Dimensions } from 'react-native';
 
 export const useCurrentWidth = () => {
     const [currentWidth, setCurrentWidh] = useState(1024);
-    const [sidBarMini, setSideBarMini]  = useState(false);
     const [contentWidth, setContentWidth] = useState(0);
 
     const Platform = useSelector((state:RootState) => state.setting);
+
     
     const handleResize = () => {
         setCurrentWidh(window.innerWidth);
@@ -29,17 +29,19 @@ export const useCurrentWidth = () => {
         }
     }, [Platform]);
     
+
     
     useEffect(() => {
         if(Platform.os === 'web' || Platform.os === 'electron'){
-            if(sidBarMini){
+            if(Platform.hide){
                 //사이드바가 작아졌을때 content width 값
+                setContentWidth(currentWidth - 80)
             }else{
                 //사이드바 정상일때 content width 값 ( default sidbar width : 260px )
                 setContentWidth(currentWidth - 260)
             }
         }
-    },[currentWidth, sidBarMini])
+    },[currentWidth, Platform.hide])
 
 
     return { contentWidth }

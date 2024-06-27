@@ -4,9 +4,11 @@ import pageSlice from "../redux/slices/page";
 import {LeftContainer} from "../styles/style";
 import { SIDBARMENU } from "../constants/constants";
 import styled from "styled-components/native";
-import { Theme } from "../styles/type";
+import { Theme } from "../types/type";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store/reducers";
+import { ScrollView, View } from "react-native";
+import { NextIcon } from "../icons/sidebar/NextIcon";
 
 
 
@@ -16,6 +18,7 @@ function Left(){
 
     return(
         <LeftContainer >
+            <ScrollView  horizontal={true}>
             { SIDBARMENU.map(( data, idx ) => (
                         <TouchView 
                             key={idx}
@@ -27,11 +30,14 @@ function Left(){
                             )}
                         >
                             <Btn>
-                                <MenuText>{data.name}</MenuText>
+                                {data.icon}
+                                <MenuText hovered={getPage.page.current.path === data.path}>{data.name}</MenuText>
                             </Btn>
                         </TouchView>
 
             ))}
+            </ScrollView>
+            <NextIcon />
         </LeftContainer>
     )
 }
@@ -43,21 +49,20 @@ const Btn = styled.View<Theme>`
     width: 100%;
     height: 100%;
     border-radius: 8px;
-    padding-left: 23px;
     cursor: pointer;
     transition: all .4s;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 6px;
 `
 const TouchView = styled.TouchableOpacity`
-    width: 80px;
+    width: 68px;
     height: 100%;
-    display: flex;
-
 `
 
 const MenuText = styled.Text<Theme>`
-    color: ${(props) => props.theme.color.white};
-    font-size: ${(props) => props.theme.fontSize.small};
+    color: ${(props) => !props.hovered ? props.theme.color.textGray : props.theme.color.white};
+    font-size: 10px;
 `
 

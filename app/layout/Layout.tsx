@@ -4,14 +4,16 @@ import Header from "./Header";
 import Footer from "./Footer";
 import DomNavigation from "../navigation/DomNavigation"
 import styled from "styled-components/native";
-import { Theme } from "../styles/type"
+import { Theme } from "../types/type"
 import { useCurrentWidth } from "../hooks/useCurrentWidth"
 import { Platform } from "react-native";
 import Constants from 'expo-constants';
 import Left from "./Left";
 
+
 function Layout(){
     const { contentWidth } = useCurrentWidth();
+
     
     return(
         <LayOut>
@@ -23,7 +25,6 @@ function Layout(){
                     <Header />
                     <DomNavigation />
                 </MainView>
-
             </ContentView>
 
             <Footer />

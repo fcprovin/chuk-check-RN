@@ -1,270 +1,74 @@
 import { View } from "react-native"
 import { ElectronHeaderBtn } from "../../styles/GlobalStyle"
-import { Size } from "../../styles/type"
+import { Size } from "../../types/type"
 import { Circle, Defs, G, Path, Polyline, Rect, Stop, Svg } from "react-native-svg"
+import { RootState } from "@/app/redux/store/reducers"
+import { useSelector } from "react-redux"
+import { useEffect, useState } from "react"
 
 
-export const QobuzIcon = ({size}:Size) => {
- 
+export const QobuzIcon = ({width, height}:Size) => {
+    const getPage = useSelector((state:RootState) => state.page);
+    const [visit, setVisit] = useState("#666")
+    
+    useEffect(() => {
+        if(getPage.page.current.path === "/qobuz"){
+            setVisit("#fff")
+        }else{
+            setVisit("#666")
+        }
+    },[getPage])
+
     return(
-        <ElectronHeaderBtn size={size}>
-            <Svg width={size} height={size} viewBox="0 0 90 120">
+        <View>
+            <Svg width={width} height={height} viewBox="0 0 130 90">
                 <Defs>
-                    <linearGradient id="linear-gradient" x1=".832" x2=".329" y1="-.471" y2=".735" gradientUnits="objectBoundingBox">
-                        <Stop offset="0"/>
-                        <Stop offset=".218" stopColor="#4a4a4a"/>
-                        <Stop offset=".24" stopColor="#565656"/>
-                        <Stop offset=".344" stopColor="#898989"/>
-                        <Stop offset=".446" stopColor="#b3b3b3"/>
-                        <Stop offset=".545" stopColor="#d4d4d4"/>
-                        <Stop offset=".639" stopColor="#ebebeb"/>
-                        <Stop offset=".726" stopColor="#fafafa"/>
-                        <Stop offset=".801" stopColor="#fff"/>
-                        <Stop offset="1" stopColor="#fff"/>
-                    </linearGradient>
-                    <clipPath id="clipPath">
-                        <Path id="패스_4529" d="M-399.607 52.8a23.587 23.587 0 0 0-1.711-8.809 23.472 23.472 0 0 0-12.649-12.922 23.451 23.451 0 0 0-9.259-1.9 23.607 23.607 0 0 0-21.74 14.359 23.57 23.57 0 0 0-1.9 9.273z"  transform="translate(446.87 -29.17)"/>
-                    </clipPath>
-                    <style>{`
-                        .cls-1,.cls-10,.cls-100,.cls-101,.cls-102,.cls-103,.cls-104,.cls-105,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35,.cls-36,.cls-37,.cls-38,.cls-39,.cls-4,.cls-40,.cls-41,.cls-42,.cls-43,.cls-44,.cls-45,.cls-46,.cls-47,.cls-48,.cls-49,.cls-5,.cls-50,.cls-51,.cls-52,.cls-53,.cls-54,.cls-55,.cls-56,.cls-57,.cls-58,.cls-59,.cls-6,.cls-60,.cls-61,.cls-62,.cls-63,.cls-64,.cls-65,.cls-66,.cls-67,.cls-68,.cls-69,.cls-7,.cls-70,.cls-71,.cls-72,.cls-73,.cls-74,.cls-75,.cls-76,.cls-77,.cls-78,.cls-79,.cls-8,.cls-80,.cls-81,.cls-82,.cls-83,.cls-84,.cls-85,.cls-86,.cls-87,.cls-88,.cls-89,.cls-9,.cls-90,.cls-91,.cls-92,.cls-93,.cls-94,.cls-95,.cls-96,.cls-97,.cls-98,.cls-99{fill:none}.cls-2{fill:#fff}.cls-4{stroke:#000}.cls-10,.cls-100,.cls-101,.cls-102,.cls-103,.cls-104,.cls-105,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35,.cls-36,.cls-37,.cls-38,.cls-39,.cls-4,.cls-40,.cls-41,.cls-42,.cls-43,.cls-44,.cls-45,.cls-46,.cls-47,.cls-48,.cls-49,.cls-5,.cls-50,.cls-51,.cls-52,.cls-53,.cls-54,.cls-55,.cls-56,.cls-57,.cls-58,.cls-59,.cls-6,.cls-60,.cls-61,.cls-62,.cls-63,.cls-64,.cls-65,.cls-66,.cls-67,.cls-68,.cls-69,.cls-7,.cls-70,.cls-71,.cls-72,.cls-73,.cls-74,.cls-75,.cls-76,.cls-77,.cls-78,.cls-79,.cls-8,.cls-80,.cls-81,.cls-82,.cls-83,.cls-84,.cls-85,.cls-86,.cls-87,.cls-88,.cls-89,.cls-9,.cls-90,.cls-91,.cls-92,.cls-93,.cls-94,.cls-95,.cls-96,.cls-97,.cls-98,.cls-99{stroke-miterlimit:10;strokeWidth:2.224px}.cls-5{stroke:#020202}.cls-6{stroke:#040404}.cls-7{stroke:#050505}.cls-8{stroke:#070707}.cls-9{stroke:#090909}.cls-10{stroke:#0b0b0b}.cls-11{stroke:#0d0d0d}.cls-12{stroke:#0e0e0e}.cls-13{stroke:#101010}.cls-14{stroke:#121212}.cls-15{stroke:#141414}.cls-16{stroke:#161616}.cls-17{stroke:#171717}.cls-18{stroke:#191919}.cls-19{stroke:#1b1b1b}.cls-20{stroke:#1d1d1d}.cls-21{stroke:#1e1e1e}.cls-22{stroke:#202020}.cls-23{stroke:#222}.cls-24{stroke:#242424}.cls-25{stroke:#262626}.cls-26{stroke:#272727}.cls-27{stroke:#292929}.cls-28{stroke:#2b2b2b}.cls-29{stroke:#2d2d2d}.cls-30{stroke:#2f2f2f}.cls-31{stroke:#303030}.cls-32{stroke:#323232}.cls-33{stroke:#343434}.cls-34{stroke:#363636}.cls-35{stroke:#383838}.cls-36{stroke:#393939}.cls-37{stroke:#3b3b3b}.cls-38{stroke:#3d3d3d}.cls-39{stroke:#3f3f3f}.cls-40{stroke:#414141}.cls-41{stroke:#424242}.cls-42{stroke:#444}.cls-43{stroke:#464646}.cls-44{stroke:#484848}.cls-45{stroke:#494949}.cls-46{stroke:#4b4b4b}.cls-47{stroke:#4d4d4d}.cls-48{stroke:#4f4f4f}.cls-49{stroke:#515151}.cls-50{stroke:#525252}.cls-51{stroke:#545454}.cls-52{stroke:#565656}.cls-53{stroke:#585858}.cls-54{stroke:#5a5a5a}.cls-55{stroke:#5b5b5b}.cls-56{stroke:#5d5d5d}.cls-57{stroke:#5f5f5f}.cls-58{stroke:#616161}.cls-59{stroke:#636363}.cls-60{stroke:#646464}.cls-61{stroke:#666}.cls-62{stroke:#686868}.cls-63{stroke:#6a6a6a}.cls-64{stroke:#6c6c6c}.cls-65{stroke:#6d6d6d}.cls-66{stroke:#6f6f6f}.cls-67{stroke:#717171}.cls-68{stroke:#737373}.cls-69{stroke:#757575}.cls-70{stroke:#767676}.cls-71{stroke:#787878}.cls-72{stroke:#7a7a7a}.cls-73{stroke:#7c7c7c}.cls-74{stroke:#7d7d7d}.cls-75{stroke:#7f7f7f}.cls-76{stroke:#818181}.cls-77{stroke:#838383}.cls-78{stroke:#858585}.cls-79{stroke:#868686}.cls-80{stroke:#888}.cls-81{stroke:#8a8a8a}.cls-82{stroke:#8c8c8c}.cls-83{stroke:#8e8e8e}.cls-84{stroke:#8f8f8f}.cls-85{stroke:#919191}.cls-86{stroke:#939393}.cls-87{stroke:#959595}.cls-88{stroke:#979797}.cls-89{stroke:#989898}.cls-90{stroke:#9a9a9a}.cls-91{stroke:#9c9c9c}.cls-92{stroke:#9e9e9e}.cls-93{stroke:#a0a0a0}.cls-94{stroke:#a1a1a1}.cls-95{stroke:#a3a3a3}.cls-96{stroke:#a5a5a5}.cls-97{stroke:#a7a7a7}.cls-98{stroke:#a9a9a9}.cls-99{stroke:#aaa}.cls-100{stroke:#acacac}.cls-101{stroke:#aeaeae}.cls-102{stroke:#b0b0b0}.cls-103{stroke:#b1b1b1}.cls-104{stroke:#b3b3b3}.cls-105{stroke:#b5b5b5}
-                    `}</style>
+                    {/* <linearGradient id="linear-gradient" x1=".832" x2=".329" y1="-.471" y2=".735" gradientUnits="objectBoundingBox">
+                        <stop offset="0"/>
+                        <stop offset=".218" stop-color="#4a4a4a"/>
+                        <stop offset=".333" stop-color="#525252"/>
+                        <stop offset=".585" stop-color="#616161"/>
+                        <stop offset=".801" stop-color="#666"/>
+                        <stop offset="1" stop-color="#666"/>
+                    </linearGradient> */}
+                    {/* <clipPath id="clip-Path">
+                        <Path id="패스_4542" d="M-363.416 150.492a23.587 23.587 0 0 0-1.711-8.808 23.47 23.47 0 0 0-12.65-12.922 23.458 23.458 0 0 0-9.258-1.9 23.609 23.609 0 0 0-21.741 14.359 23.571 23.571 0 0 0-1.9 9.273z" fill="none"/>
+                    </clipPath> */}
                 </Defs>
-                <G id="main_icon_qobuz_gold" transform="translate(5089 -4984.166)">
-                    <Path id="사각형_1340" d="M0 0H130V90H0z" transform="translate(-5089 4984.166)"/>
-                    <G id="그룹_5959" transform="translate(-4582.891 4994.164)">
-                        <Path id="패스_4527" d="M-407.483 61.161l-6.048-6.049c.458-.625.893-1.26 1.3-1.9A34.681 34.681 0 0 0-422.908 5.4 34.54 34.54 0 0 0-441.453 0a34.505 34.505 0 0 0-29.273 16.077 34.7 34.7 0 0 0 10.674 47.815 34.554 34.554 0 0 0 18.543 5.4 34.812 34.812 0 0 0 20.209-6.473l6.077 6.078 1.374 1.375 1.375-1.375 4.988-4.986 1.375-1.375z"/>
-                        <G id="그룹_5950" transform="translate(-473.353 2.719)">
-                            <Path id="패스_4528" d="M-436.926 71.052a31.836 31.836 0 0 1-17.086-4.976 31.973 31.973 0 0 1-9.837-44.061A31.8 31.8 0 0 1-436.869 7.2a31.828 31.828 0 0 1 17.084 4.979 31.721 31.721 0 0 1 14.041 19.993 31.7 31.7 0 0 1-4.205 24.064 31.8 31.8 0 0 1-26.977 14.816zm.057-57.728A25.7 25.7 0 0 0-458.676 25.3a25.841 25.841 0 0 0 7.951 35.61 25.71 25.71 0 0 0 13.8 4.022 25.715 25.715 0 0 0 21.813-11.977 25.617 25.617 0 0 0 3.4-19.446 25.634 25.634 0 0 0-11.348-16.158 25.712 25.712 0 0 0-13.809-4.026z"  transform="translate(468.809 -7.2)"/>
-                        </G>
-                        <G id="그룹_5955" transform="translate(-465.069 11.014)">
-                            <G id="그룹_5954" clipPath="url(#clipPath)" transform="translate(0)">
-                                <G id="그룹_5953" transform="translate(3.083 -4.543)">
-                                    <G id="그룹_5951">
-                                        <Path id="선_194" d="M20.536 20.986L0 0"  transform="translate(0 7.666)"/>
-                                        <Path id="선_195" d="M20.333 21.062L0 0"  transform="translate(0.203 7.59)"/>
-                                        <Path id="선_196" d="M20.13 21.138L0 0"  transform="translate(0.406 7.515)"/>
-                                        <Path id="선_197" d="M19.927 21.214L0 0"  transform="translate(0.609 7.439)"/>
-                                        <Path id="선_198" d="M19.724 21.29L0 0"  transform="translate(0.812 7.363)"/>
-                                        <Path id="선_199" d="M19.522 21.366L0 0"  transform="translate(1.014 7.287)"/>
-                                        <Path id="선_200" d="M19.318 21.442L0 0"  transform="translate(1.218 7.211)"/>
-                                        <Path id="선_201" d="M19.116 21.518L0 0"  transform="translate(1.42 7.135)"/>
-                                        <Path id="선_202" d="M18.913 21.594L0 0"  transform="translate(1.623 7.059)"/>
-                                        <Path id="선_203" d="M18.71 21.67L0 0"  transform="translate(1.826 6.983)"/>
-                                        <Path id="선_204" d="M18.506 21.746L0 0"  transform="translate(2.029 6.907)"/>
-                                        <Path id="선_205" d="M18.304 21.821L0 0"  transform="translate(2.232 6.831)"/>
-                                        <Path id="선_206" d="M18.101 21.897L0 0"  transform="translate(2.435 6.756)"/>
-                                        <Path id="선_207" d="M17.898 21.973L0 0"  transform="translate(2.638 6.68)"/>
-                                        <Path id="선_208" d="M17.695 22.049L0 0"  transform="translate(2.841 6.604)"/>
-                                        <Path id="선_209" d="M17.492 22.125L0 0"  transform="translate(3.044 6.528)"/>
-                                        <Path id="선_210" d="M17.289 22.201L0 0"  transform="translate(3.247 6.452)"/>
-                                        <Path id="선_211" d="M17.086 22.277L0 0"  transform="translate(3.45 6.376)"/>
-                                        <Path id="선_212" d="M16.883 22.353L0 0"  transform="translate(3.653 6.3)"/>
-                                        <Path id="선_213" d="M16.681 22.429L0 0"  transform="translate(3.855 6.224)"/>
-                                        <Path id="선_214" d="M16.477 22.504L0 0"  transform="translate(4.059 6.148)"/>
-                                        <Path id="선_215" d="M16.275 22.58L0 0"  transform="translate(4.261 6.072)"/>
-                                        <Path id="선_216" d="M16.072 22.656L0 0"  transform="translate(4.464 5.997)"/>
-                                        <Path id="선_217" d="M15.869 22.732L0 0"  transform="translate(4.667 5.921)"/>
-                                        <Path id="선_218" d="M15.666 22.808L0 0"  transform="translate(4.87 5.845)"/>
-                                        <Path id="선_219" d="M15.463 22.884L0 0"  transform="translate(5.073 5.769)"/>
-                                        <Path id="선_220" d="M15.26 22.96L0 0"  transform="translate(5.276 5.693)"/>
-                                        <Path id="선_221" d="M15.057 23.036L0 0"  transform="translate(5.479 5.617)"/>
-                                        <Path id="선_222" d="M14.854 23.112L0 0"  transform="translate(5.682 5.541)"/>
-                                        <Path id="선_223" d="M14.651 23.188L0 0"  transform="translate(5.884 5.465)"/>
-                                        <Path id="선_224" d="M14.448 23.264L0 0"  transform="translate(6.088 5.389)"/>
-                                        <Path id="선_225" d="M14.246 23.339L0 0"  transform="translate(6.29 5.313)"/>
-                                        <Path id="선_226" d="M14.042 23.416L0 0"  transform="translate(6.494 5.237)"/>
-                                        <Path id="선_227" d="M13.84 23.491L0 0"  transform="translate(6.696 5.162)"/>
-                                        <Path id="선_228" d="M13.637 23.567L0 0"  transform="translate(6.899 5.086)"/>
-                                        <Path id="선_229" d="M13.434 23.643L0 0"  transform="translate(7.102 5.01)"/>
-                                        <Path id="선_230" d="M13.231 23.719L0 0"  transform="translate(7.305 4.934)"/>
-                                        <Path id="선_231" d="M13.028 23.795L0 0"  transform="translate(7.508 4.858)"/>
-                                        <Path id="선_232" d="M12.825 23.871L0 0"  transform="translate(7.711 4.782)"/>
-                                        <Path id="선_233" d="M12.622 23.947L0 0"  transform="translate(7.914 4.706)"/>
-                                        <Path id="선_234" d="M12.419 24.023L0 0"  transform="translate(8.117 4.63)"/>
-                                        <Path id="선_235" d="M12.216 24.098L0 0"  transform="translate(8.319 4.554)"/>
-                                        <Path id="선_236" d="M12.013 24.174L0 0"  transform="translate(8.523 4.478)"/>
-                                        <Path id="선_237" d="M11.81 24.25L0 0"  transform="translate(8.725 4.403)"/>
-                                        <Path id="선_238" d="M11.607 24.326L0 0"  transform="translate(8.929 4.327)"/>
-                                        <Path id="선_239" d="M11.405 24.402L0 0"  transform="translate(9.131 4.251)"/>
-                                        <Path id="선_240" d="M11.202 24.478L0 0"  transform="translate(9.334 4.175)"/>
-                                        <Path id="선_241" d="M10.999 24.554L0 0"  transform="translate(9.537 4.099)"/>
-                                        <Path id="선_242" d="M10.796 24.63L0 0"  transform="translate(9.74 4.023)"/>
-                                        <Path id="선_243" d="M10.593 24.706L0 0"  transform="translate(9.943 3.947)"/>
-                                        <Path id="선_244" d="M10.39 24.782L0 0"  transform="translate(10.146 3.871)"/>
-                                        <Path id="선_245" d="M10.187 24.858L0 0"  transform="translate(10.349 3.795)"/>
-                                        <Path id="선_246" d="M9.984 24.934L0 0"  transform="translate(10.552 3.719)"/>
-                                        <Path id="선_247" d="M9.781 25.01L0 0"  transform="translate(10.754 3.643)"/>
-                                        <Path id="선_248" d="M9.578 25.085L0 0"  transform="translate(10.958 3.568)"/>
-                                        <Path id="선_249" d="M9.375 25.161L0 0"  transform="translate(11.16 3.492)"/>
-                                        <Path id="선_250" d="M9.172 25.237L0 0"  transform="translate(11.364 3.416)"/>
-                                        <Path id="선_251" d="M8.97 25.313L0 0"  transform="translate(11.566 3.34)"/>
-                                        <Path id="선_252" d="M8.767 25.389L0 0"  transform="translate(11.769 3.264)"/>
-                                        <Path id="선_253" d="M8.564 25.465L0 0"  transform="translate(11.972 3.188)"/>
-                                        <Path id="선_254" d="M8.361 25.541L0 0"  transform="translate(12.175 3.112)"/>
-                                        <Path id="선_255" d="M8.158 25.617L0 0"  transform="translate(12.378 3.036)"/>
-                                        <Path id="선_256" d="M7.955 25.692L0 0"  transform="translate(12.581 2.96)"/>
-                                        <Path id="선_257" d="M7.752 25.769L0 0"  transform="translate(12.784 2.884)"/>
-                                        <Path id="선_258" d="M7.549 25.844L0 0"  transform="translate(12.987 2.809)"/>
-                                        <Path id="선_259" d="M7.346 25.92L0 0"  transform="translate(13.19 2.733)"/>
-                                        <Path id="선_260" d="M7.143 25.996L0 0"  transform="translate(13.393 2.657)"/>
-                                        <Path id="선_261" d="M6.94 26.072L0 0"  transform="translate(13.596 2.581)"/>
-                                        <Path id="선_262" d="M6.738 26.148L0 0"  transform="translate(13.798 2.505)"/>
-                                        <Path id="선_263" d="M6.535 26.224L0 0"  transform="translate(14.001 2.429)"/>
-                                        <Path id="선_264" d="M6.332 26.3L0 0"  transform="translate(14.204 2.353)"/>
-                                        <Path id="선_265" d="M6.129 26.376L0 0"  transform="translate(14.407 2.277)"/>
-                                        <Path id="선_266" d="M5.926 26.452L0 0"  transform="translate(14.61 2.201)"/>
-                                        <Path id="선_267" d="M5.723 26.528L0 0"  transform="translate(14.813 2.125)"/>
-                                        <Path id="선_268" d="M5.52 26.603L0 0"  transform="translate(15.016 2.05)"/>
-                                        <Path id="선_269" d="M5.317 26.68L0 0"  transform="translate(15.219 1.973)"/>
-                                        <Path id="선_270" d="M5.114 26.755L0 0"  transform="translate(15.422 1.898)"/>
-                                        <Path id="선_271" d="M4.911 26.831L0 0"  transform="translate(15.625 1.822)"/>
-                                        <Path id="선_272" d="M4.708 26.907L0 0"  transform="translate(15.828 1.746)"/>
-                                        <Path id="선_273" d="M4.505 26.983L0 0"  transform="translate(16.031 1.67)"/>
-                                        <Path id="선_274" d="M4.303 27.059L0 0"  transform="translate(16.233 1.594)"/>
-                                        <Path id="선_275" d="M4.1 27.135L0 0"  transform="translate(16.436 1.518)"/>
-                                        <Path id="선_276" d="M3.897 27.211L0 0"  transform="translate(16.639 1.442)"/>
-                                        <Path id="선_277" d="M3.694 27.287L0 0"  transform="translate(16.842 1.366)"/>
-                                        <Path id="선_278" d="M3.491 27.363L0 0"  transform="translate(17.045 1.29)"/>
-                                        <Path id="선_279" d="M3.288 27.438L0 0"  transform="translate(17.248 1.215)"/>
-                                        <Path id="선_280" d="M3.085 27.514L0 0"  transform="translate(17.451 1.139)"/>
-                                        <Path id="선_281" d="M2.882 27.59L0 0"  transform="translate(17.654 1.063)"/>
-                                        <Path id="선_282" d="M2.679 27.666L0 0"  transform="translate(17.857 0.987)"/>
-                                        <Path id="선_283" d="M2.476 27.742L0 0"  transform="translate(18.06 0.911)"/>
-                                        <Path id="선_284" d="M2.273 27.818L0 0"  transform="translate(18.263 0.835)"/>
-                                        <Path id="선_285" d="M2.07 27.894L0 0"  transform="translate(18.466 0.759)"/>
-                                        <Path id="선_286" d="M1.868 27.97L0 0"  transform="translate(18.668 0.683)"/>
-                                        <Path id="선_287" d="M1.665 28.046L0 0"  transform="translate(18.871 0.607)"/>
-                                        <Path id="선_288" d="M1.462 28.122L0 0"  transform="translate(19.074 0.531)"/>
-                                        <Path id="선_289" d="M1.259 28.198L0 0"  transform="translate(19.277 0.455)"/>
-                                        <Path id="선_290" d="M1.056 28.273L0 0"  transform="translate(19.48 0.38)"/>
-                                        <Path id="선_291" d="M0.853 28.349L0 0"  transform="translate(19.683 0.303)"/>
-                                        <Path id="선_292" d="M0.65 28.425L0 0"  transform="translate(19.886 0.228)"/>
-                                        <Path id="선_293" d="M0.447 28.501L0 0"  transform="translate(20.089 0.152)"/>
-                                        <Path id="선_294" d="M0.244 28.577L0 0"  transform="translate(20.292 0.076)"/>
-                                        <Path id="선_295" d="M0.041 28.653L0 0"  transform="translate(20.495)"/>
-                                    </G>
-                                    <G id="그룹_5952" transform="translate(20.56)">
-                                        <Path id="선_296" d="M0 20.986L20.536 0"  transform="translate(0 7.731)"/>
-                                        <Path id="선_297" d="M0 21.062L20.333 0"  transform="translate(0 7.654)"/>
-                                        <Path id="선_298" d="M0 21.138L20.13 0"  transform="translate(0 7.577)"/>
-                                        <Path id="선_299" d="M0 21.214L19.927 0"  transform="translate(0 7.501)"/>
-                                        <Path id="선_300" d="M0 21.29L19.724 0"  transform="translate(0 7.424)"/>
-                                        <Path id="선_301" d="M0 21.366L19.521 0"  transform="translate(0 7.348)"/>
-                                        <Path id="선_302" d="M0 21.442L19.318 0"  transform="translate(0 7.271)"/>
-                                        <Path id="선_303" d="M0 21.518L19.115 0"  transform="translate(0 7.195)"/>
-                                        <Path id="선_304" d="M0 21.594L18.912 0"  transform="translate(0 7.118)"/>
-                                        <Path id="선_305" d="M0 21.67L18.709 0"  transform="translate(0 7.042)"/>
-                                        <Path id="선_306" d="M0 21.745L18.506 0"  transform="translate(0 6.965)"/>
-                                        <Path id="선_307" d="M0 21.821L18.303 0"  transform="translate(0 6.889)"/>
-                                        <Path id="선_308" d="M0 21.897L18.101 0"  transform="translate(0 6.812)"/>
-                                        <Path id="선_309" d="M0 21.973L17.898 0"  transform="translate(0 6.736)"/>
-                                        <Path id="선_310" d="M0 22.049L17.695 0"  transform="translate(0 6.659)"/>
-                                        <Path id="선_311" d="M0 22.125L17.492 0"  transform="translate(0 6.582)"/>
-                                        <Path id="선_312" d="M0 22.201L17.289 0"  transform="translate(0 6.506)"/>
-                                        <Path id="선_313" d="M0 22.277L17.086 0"  transform="translate(0 6.429)"/>
-                                        <Path id="선_314" d="M0 22.353L16.883 0"  transform="translate(0 6.353)"/>
-                                        <Path id="선_315" d="M0 22.429L16.68 0"  transform="translate(0 6.276)"/>
-                                        <Path id="선_316" d="M0 22.504L16.477 0"  transform="translate(0 6.2)"/>
-                                        <Path id="선_317" d="M0 22.58L16.274 0"  transform="translate(0 6.123)"/>
-                                        <Path id="선_318" d="M0 22.656L16.071 0"  transform="translate(0 6.047)"/>
-                                        <Path id="선_319" d="M0 22.732L15.868 0"  transform="translate(0 5.97)"/>
-                                        <Path id="선_320" d="M0 22.808L15.665 0"  transform="translate(0 5.894)"/>
-                                        <Path id="선_321" d="M0 22.884L15.462 0"  transform="translate(0 5.817)"/>
-                                        <Path id="선_322" d="M0 22.96L15.26 0"  transform="translate(0 5.741)"/>
-                                        <Path id="선_323" d="M0 23.036L15.057 0"  transform="translate(0 5.664)"/>
-                                        <Path id="선_324" d="M0 23.112L14.854 0"  transform="translate(0 5.587)"/>
-                                        <Path id="선_325" d="M0 23.188L14.651 0"  transform="translate(0 5.511)"/>
-                                        <Path id="선_326" d="M0 23.264L14.448 0"  transform="translate(0 5.434)"/>
-                                        <Path id="선_327" d="M0 23.34L14.245 0"  transform="translate(0 5.358)"/>
-                                        <Path id="선_328" d="M0 23.416L14.042 0"  transform="translate(0 5.281)"/>
-                                        <Path id="선_329" d="M0 23.491L13.839 0"  transform="translate(0 5.205)"/>
-                                        <Path id="선_330" d="M0 23.567L13.636 0"  transform="translate(0 5.128)"/>
-                                        <Path id="선_331" d="M0 23.643L13.434 0"  transform="translate(0 5.052)"/>
-                                        <Path id="선_332" d="M0 23.719L13.23 0"  transform="translate(0 4.975)"/>
-                                        <Path id="선_333" d="M0 23.795L13.028 0"  transform="translate(0 4.898)"/>
-                                        <Path id="선_334" d="M0 23.871L12.824 0"  transform="translate(0 4.822)"/>
-                                        <Path id="선_335" d="M0 23.947L12.622 0"  transform="translate(0 4.745)"/>
-                                        <Path id="선_336" d="M0 24.023L12.419 0"  transform="translate(0 4.669)"/>
-                                        <Path id="선_337" d="M0 24.099L12.216 0"  transform="translate(0 4.592)"/>
-                                        <Path id="선_338" d="M0 24.175L12.013 0"  transform="translate(0 4.516)"/>
-                                        <Path id="선_339" d="M0 24.25L11.81 0"  transform="translate(0 4.439)"/>
-                                        <Path id="선_340" d="M0 24.326L11.607 0"  transform="translate(0 4.363)"/>
-                                        <Path id="선_341" d="M0 24.402L11.404 0"  transform="translate(0 4.286)"/>
-                                        <Path id="선_342" d="M0 24.478L11.201 0"  transform="translate(0 4.21)"/>
-                                        <Path id="선_343" d="M0 24.554L10.998 0"  transform="translate(0 4.133)"/>
-                                        <Path id="선_344" d="M0 24.63L10.795 0"  transform="translate(0 4.057)"/>
-                                        <Path id="선_345" d="M0 24.706L10.592 0"  transform="translate(0 3.98)"/>
-                                        <Path id="선_346" d="M0 24.782L10.389 0"  transform="translate(0 3.904)"/>
-                                        <Path id="선_347" d="M0 24.858L10.187 0"  transform="translate(0 3.827)"/>
-                                        <Path id="선_348" d="M0 24.934L9.984 0"  transform="translate(0 3.75)"/>
-                                        <Path id="선_349" d="M0 25.01L9.781 0"  transform="translate(0 3.674)"/>
-                                        <Path id="선_350" d="M0 25.085L9.578 0"  transform="translate(0 3.597)"/>
-                                        <Path id="선_351" d="M0 25.161L9.375 0"  transform="translate(0 3.521)"/>
-                                        <Path id="선_352" d="M0 25.237L9.172 0"  transform="translate(0 3.444)"/>
-                                        <Path id="선_353" d="M0 25.313L8.969 0"  transform="translate(0 3.368)"/>
-                                        <Path id="선_354" d="M0 25.389L8.766 0"  transform="translate(0 3.291)"/>
-                                        <Path id="선_355" d="M0 25.465L8.563 0"  transform="translate(0 3.215)"/>
-                                        <Path id="선_356" d="M0 25.541L8.36 0"  transform="translate(0 3.138)"/>
-                                        <Path id="선_357" d="M0 25.617L8.157 0"  transform="translate(0 3.061)"/>
-                                        <Path id="선_358" d="M0 25.692L7.954 0"  transform="translate(0 2.985)"/>
-                                        <Path id="선_359" d="M0 25.768L7.752 0"  transform="translate(0 2.908)"/>
-                                        <Path id="선_360" d="M0 25.845L7.549 0"  transform="translate(0 2.832)"/>
-                                        <Path id="선_361" d="M0 25.92L7.346 0"  transform="translate(0 2.755)"/>
-                                        <Path id="선_362" d="M0 25.996L7.142 0"  transform="translate(0 2.679)"/>
-                                        <Path id="선_363" d="M0 26.072L6.94 0"  transform="translate(0 2.602)"/>
-                                        <Path id="선_364" d="M0 26.148L6.737 0"  transform="translate(0 2.526)"/>
-                                        <Path id="선_365" d="M0 26.224L6.534 0"  transform="translate(0 2.449)"/>
-                                        <Path id="선_366" d="M0 26.3L6.331 0"  transform="translate(0 2.373)"/>
-                                        <Path id="선_367" d="M0 26.376L6.128 0"  transform="translate(0 2.296)"/>
-                                        <Path id="선_368" d="M0 26.452L5.925 0"  transform="translate(0 2.22)"/>
-                                        <Path id="선_369" d="M0 26.527L5.722 0"  transform="translate(0 2.143)"/>
-                                        <Path id="선_370" d="M0 26.603L5.519 0"  transform="translate(0 2.067)"/>
-                                        <Path id="선_371" d="M0 26.68L5.317 0"  transform="translate(0 1.99)"/>
-                                        <Path id="선_372" d="M0 26.755L5.113 0"  transform="translate(0 1.913)"/>
-                                        <Path id="선_373" d="M0 26.831L4.911 0"  transform="translate(0 1.837)"/>
-                                        <Path id="선_374" d="M0 26.907L4.708 0"  transform="translate(0 1.76)"/>
-                                        <Path id="선_375" d="M0 26.983L4.505 0"  transform="translate(0 1.684)"/>
-                                        <Path id="선_376" d="M0 27.059L4.302 0"  transform="translate(0 1.607)"/>
-                                        <Path id="선_377" d="M0 27.135L4.099 0"  transform="translate(0 1.531)"/>
-                                        <Path id="선_378" d="M0 27.211L3.896 0"  transform="translate(0 1.454)"/>
-                                        <Path id="선_379" d="M0 27.287L3.693 0"  transform="translate(0 1.378)"/>
-                                        <Path id="선_380" d="M0 27.363L3.49 0"  transform="translate(0 1.301)"/>
-                                        <Path id="선_381" d="M0 27.438L3.287 0"  transform="translate(0 1.225)"/>
-                                        <Path id="선_382" d="M0 27.514L3.084 0"  transform="translate(0 1.148)"/>
-                                        <Path id="선_383" d="M0 27.59L2.882 0"  transform="translate(0 1.072)"/>
-                                        <Path id="선_384" d="M0 27.666L2.678 0"  transform="translate(0 0.995)"/>
-                                        <Path id="선_385" d="M0 27.742L2.476 0"  transform="translate(0 0.918)"/>
-                                        <Path id="선_386" d="M0 27.818L2.273 0"  transform="translate(0 0.842)"/>
-                                        <Path id="선_387" d="M0 27.894L2.07 0"  transform="translate(0 0.765)"/>
-                                        <Path id="선_388" d="M0 27.97L1.867 0"  transform="translate(0 0.689)"/>
-                                        <Path id="선_389" d="M0 28.046L1.664 0"  transform="translate(0 0.612)"/>
-                                        <Path id="선_390" d="M0 28.122L1.461 0"  transform="translate(0 0.536)"/>
-                                        <Path id="선_391" d="M0 28.197L1.258 0"  transform="translate(0 0.459)"/>
-                                        <Path id="선_392" d="M0 28.273L1.055 0"  transform="translate(0 0.383)"/>
-                                        <Path id="선_393" d="M0 28.349L0.852 0"  transform="translate(0 0.306)"/>
-                                        <Path id="선_394" d="M0 28.425L0.649 0"  transform="translate(0 0.23)"/>
-                                        <Path id="선_395" d="M0 28.501L0.447 0"  transform="translate(0 0.153)"/>
-                                        <Path id="선_396" d="M0 28.577L0.243 0"  transform="translate(0 0.077)"/>
-                                        <Path id="선_397" d="M0 28.653L0.041 0"  transform="translate(0)"/>
+                <G id="main_icon_qobuz" transform="translate(5089 -4860.166)">
+                    <Path id="사각형_1328" d="M0 0H130V90H0z" fill="none" transform="translate(-5089 4860.166)"/>
+                    <G id="그룹_5970" transform="translate(-4637.281 4754.32)">
+                        <G id="그룹_5969">
+                            <Path id="패스_4540" d="M-353.093 177.008l-6.048-6.049c.459-.625.893-1.26 1.3-1.9a34.681 34.681 0 0 0-10.676-47.81 34.545 34.545 0 0 0-18.545-5.4 34.505 34.505 0 0 0-29.273 16.077 34.7 34.7 0 0 0 10.674 47.815 34.549 34.549 0 0 0 18.543 5.4 34.815 34.815 0 0 0 20.211-6.473l6.077 6.078 1.374 1.376 1.375-1.375 4.988-4.986 1.375-1.375z"/>
+                            <G id="그룹_5961">
+                                <Path id="패스_4541" fill={visit} d="M-387.079 182.417a31.831 31.831 0 0 1-17.086-4.976A31.973 31.973 0 0 1-414 133.38a31.8 31.8 0 0 1 26.981-14.815 31.83 31.83 0 0 1 17.083 4.979 31.723 31.723 0 0 1 14.036 19.993 31.7 31.7 0 0 1-4.2 24.064 31.8 31.8 0 0 1-26.979 14.816zm.057-57.728a25.707 25.707 0 0 0-21.807 11.974 25.841 25.841 0 0 0 7.951 35.61 25.707 25.707 0 0 0 13.8 4.022 25.713 25.713 0 0 0 21.812-11.976 25.613 25.613 0 0 0 3.4-19.446 25.636 25.636 0 0 0-11.348-16.159 25.715 25.715 0 0 0-13.808-4.025z"/>
+                            </G>
+                            <G id="그룹_5965">
+                                <G id="그룹_5964" clipPath="url(#clip-Path)">
+                                    <G id="그룹_5963">
+                                        <G id="그룹_5962">
+                                            <Path id="선_398" fill="none" stroke="#000" strokeMiterlimit="10" strokeWidth="0.84px" d="M0 20.986L20.535 0" transform="translate(-387.035 130.047)"/>
+                                        </G>
                                     </G>
                                 </G>
                             </G>
-                        </G>
-                        <G id="그룹_5957" transform="translate(-453.58 22.502)">
-                            <Path id="패스_4530" d="M-398.7 62.282a11.473 11.473 0 0 1 6.05 15.057 11.47 11.47 0 0 1-15.059 6.048 11.466 11.466 0 0 1-6.048-15.057 11.474 11.474 0 0 1 15.057-6.048"  transform="translate(415.347 -60.693)"/>
-                            <Path id="패스_4531" d="M-387.239 85.71A2.357 2.357 0 0 1-386 88.8a2.356 2.356 0 0 1-3.093 1.236 2.349 2.349 0 0 1-1.239-3.088 2.352 2.352 0 0 1 3.089-1.241" transform="translate(400.307 -75.733)"/>
-                            <G id="그룹_5956">
-                                <Path id="패스_4532" d="M-404.3 83.882a12.064 12.064 0 0 1-4.763-.978 12.153 12.153 0 0 1-6.4-15.928A12.131 12.131 0 0 1-404.3 59.6a12.053 12.053 0 0 1 4.76.978 12.054 12.054 0 0 1 6.5 6.638 12.051 12.051 0 0 1-.1 9.289 12.129 12.129 0 0 1-11.16 7.377zm.006-22.1a9.949 9.949 0 0 0-9.162 6.051 9.966 9.966 0 0 0 5.247 13.067 9.892 9.892 0 0 0 3.906.8 9.951 9.951 0 0 0 9.16-6.052 9.887 9.887 0 0 0 .081-7.618 9.9 9.9 0 0 0-5.331-5.445 9.9 9.9 0 0 0-3.907-.804z" transform="translate(416.442 -59.598)"/>
+                            <G id="그룹_5967">
+                                <Path id="패스_4543" d="M-382.542 139.937a11.472 11.472 0 0 1 6.05 15.057 11.47 11.47 0 0 1-15.059 6.048 11.466 11.466 0 0 1-6.049-15.057 11.475 11.475 0 0 1 15.058-6.048" fill={visit}/>
+                                <Path id="패스_4544" d="M-386.123 148.326a2.358 2.358 0 0 1 1.243 3.093 2.357 2.357 0 0 1-3.093 1.236 2.349 2.349 0 0 1-1.239-3.089 2.352 2.352 0 0 1 3.089-1.24"/>
+                                <G id="그룹_5966">
+                                    <Path id="패스_4545" d="M-387.052 162.632a12.049 12.049 0 0 1-4.763-.978 12.153 12.153 0 0 1-6.4-15.928 12.13 12.13 0 0 1 11.171-7.377 12.056 12.056 0 0 1 4.76.978 12.057 12.057 0 0 1 6.5 6.638 12.052 12.052 0 0 1-.1 9.29 12.127 12.127 0 0 1-11.168 7.377zm.006-22.1a9.949 9.949 0 0 0-9.163 6.051 9.966 9.966 0 0 0 5.251 13.063 9.9 9.9 0 0 0 3.906.8 9.95 9.95 0 0 0 9.16-6.053 9.888 9.888 0 0 0 .08-7.618 9.894 9.894 0 0 0-5.33-5.445 9.9 9.9 0 0 0-3.904-.798z"/>
+                                </G>
                             </G>
+                            <G id="그룹_5968">
+                                <Path id="패스_4546" fill="url(#linear-gradient)" d="M-387.073 176.295a25.706 25.706 0 0 1-13.8-4.022 25.72 25.72 0 0 1-2.848-2.1l-4.348 4.348a32.145 32.145 0 0 0 3.909 2.922 31.83 31.83 0 0 0 17.085 4.976 31.814 31.814 0 0 0 20.606-7.509l-4.348-4.348a25.728 25.728 0 0 1-16.256 5.733z"/>
+                            </G>
+                            <Path id="패스_4547" d="M-372.943 160.979a2.751 2.751 0 0 0-1.951-.807 2.748 2.748 0 0 0-1.949.807 2.759 2.759 0 0 0 0 3.9l17.391 17.39 3.9-3.9z" fill={'#666'}/>
                         </G>
-                        <G id="그룹_5958" transform="translate(-462.457 54.325)">
-                            <Path id="패스_4533" fill="url(#linear-gradient)" d="M-418.958 150a25.707 25.707 0 0 1-13.8-4.022 25.806 25.806 0 0 1-2.848-2.1l-4.348 4.348a32.083 32.083 0 0 0 3.909 2.922 31.833 31.833 0 0 0 17.085 4.976 31.812 31.812 0 0 0 20.605-7.509l-4.348-4.348A25.731 25.731 0 0 1-418.958 150z" transform="translate(439.952 -143.88)"/>
-                        </G>
-                        <Path id="패스_4534" d="M-354.687 118.2a2.749 2.749 0 0 0-1.95-.807 2.75 2.75 0 0 0-1.95.807 2.759 2.759 0 0 0 0 3.9l17.387 17.4 3.9-3.9z"  transform="translate(-72.647 -73.071)"/>
                     </G>
                 </G>
             </Svg>
 
-        </ElectronHeaderBtn>)
+
+        </View>)
 }
 

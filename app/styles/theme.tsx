@@ -1,4 +1,4 @@
-import { DefaultTheme } from "./type";
+import { DefaultTheme } from "../types/type";
 
 
 
@@ -11,13 +11,14 @@ export const theme:DefaultTheme ={
         black: "#000000",
         backgroundGray : "rgba(200, 200, 200, 0.05)",
         textGray: "#808080",
-        footerBackGround: "#1e1e1e"
+        footerBackGround: "#1e1e1e",
+        loginGray : "#919191"
     },
     fontSize: {
         small: "12px",
         Regular: "14px",
         large: "16px",
-        title: "25px"
+        title: "38px"
     }
 }
 

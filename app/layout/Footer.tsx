@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Theme } from "../styles/type"
+import { Theme } from "../types/type"
+import { Platform } from "react-native";
 
 
 
@@ -27,4 +28,5 @@ const ConTainer = styled.View<Theme>`
     bottom: 0;
     border-top-width: 0.5px;
     border-top-color: ${(props) => props.theme.color.textGray};
+    margin-bottom: ${Platform.OS !== 'web' ? "50px" : 0};
 `

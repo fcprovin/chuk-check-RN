@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  rose : {},
-  tidal: {}
+  rose : null,
+  tidal: null
 };
 const userSlice = createSlice({
   name: 'user',

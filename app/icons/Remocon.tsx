@@ -1,13 +1,13 @@
 import { View } from "react-native"
 import { ElectronHeaderBtn } from "../styles/GlobalStyle"
-import { Size } from "../styles/type"
+import { Size } from "../types/type"
 import { Defs, G, Path, Rect, Svg } from "react-native-svg"
 
-export const Remocon = ({size}:Size) => {
+export const Remocon = ({width}:Size) => {
  
     return(
-        <ElectronHeaderBtn size={size}>
-            <Svg width={size} height={size} viewBox="0 0 20 28" fill="none">
+        <ElectronHeaderBtn size={width}>
+            <Svg width={width} height={width} viewBox="0 0 20 28" fill="none">
                 <Path d="M11.1782 5.24487C11.1782 4.59483 10.6513 4.06787 10.0012 4.06787C9.35118 4.06787 8.82422 4.59483 8.82422 5.24487V11.1299C8.82422 11.7799 9.35118 12.3069 10.0012 12.3069C10.6513 12.3069 11.1782 11.7799 11.1782 11.1299V5.24487Z" fill="white"/>
                 <Path d="M7.05786 7.01075C6.40782 7.01075 5.88086 7.53771 5.88086 8.18775C5.88086 8.83779 6.40782 9.36475 7.05786 9.36475H12.9429C13.5929 9.36475 14.1199 8.83779 14.1199 8.18775C14.1199 7.53771 13.5929 7.01075 12.9429 7.01075H7.05786Z" fill="white"/>
                 <Path d="M6.62958 17.6801C7.51986 17.6801 8.24158 16.9583 8.24158 16.0681C8.24158 15.1778 7.51986 14.4561 6.62958 14.4561C5.7393 14.4561 5.01758 15.1778 5.01758 16.0681C5.01758 16.9583 5.7393 17.6801 6.62958 17.6801Z" fill="white"/>

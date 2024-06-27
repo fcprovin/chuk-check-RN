@@ -8,6 +8,8 @@ import { BugsIcon } from './BugsIcon';
 import { QobuzIcon } from './Qobuz';
 import { RoseTubeIcon } from './RoseTubeIcon';
 import { SettingIcon } from './SettingIcon';
+import {AppleMusicIcon} from "./AppleMusicIcon"
+import { NextIcon } from "./NextIcon"; 
 
 
 
@@ -21,5 +23,7 @@ export {
     BugsIcon,
     QobuzIcon,
     RoseTubeIcon,
-    SettingIcon
+    SettingIcon,
+    AppleMusicIcon,
+    NextIcon
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import { Svg, Rect, Polyline, G, Defs } from "react-native-svg";
 import { ElectronHeaderBtn } from "../styles/GlobalStyle";
-import { Size } from "../styles/type";
+import { Size } from "../types/type";
 
-export const ElectronMiniMize = ({ size }: Size) => {
+export const ElectronMiniMize = ({ width }: Size) => {
   return (
-    <ElectronHeaderBtn size={size}>
-      <Svg viewBox="0 0 32 32" width={size} height={size}>
+    <ElectronHeaderBtn size={width}>
+      <Svg viewBox="0 0 32 32" width={width} height={width}>
         <Defs>
           <style>
             {`.cls-1 { fill: none; stroke: #fff; strokeLinejoin: round; strokeWidth: 2px; }`}

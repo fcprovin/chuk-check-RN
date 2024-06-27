@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Theme } from "../../styles/type";
+import { Theme } from "../../types/type";
 import { useEffect } from "react";
 import { useAppDispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
