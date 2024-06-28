@@ -1,4 +1,4 @@
-import { Dimensions, Platform, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Platform, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import WebView from "react-native-webview";
 import styled from "styled-components/native";
 import { TIDALURI } from "../../constants/constants";
@@ -6,17 +6,22 @@ import { ModalContent } from "../../styles/style";
 import XIcon from "@/app/icons/XIcon";
 import RoseLogin from "./RoseLogin";
 import { Theme } from "@/app/types/type";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useResizeWindow } from "@/app/hooks/useResizeWindow";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/app/redux/store/reducers";
 import settingSlice from "@/app/redux/slices/setting";
+import { postTidalLogin } from "@/app/api/TidalAPI";
+import { useLocalSave } from "@/app/hooks/useLocalSave";
 
 
 interface IModal{
     entity: string
 }
 
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 function Modal(props:IModal){
     const { entity } = props
@@ -25,6 +30,7 @@ function Modal(props:IModal){
     const { resize }  = useResizeWindow()
     const getModal = useSelector((state:RootState) => state.setting.modal)
     const dispatch = useDispatch();
+    const { saveLocalData } = useLocalSave()
 
     useEffect(() => {
         const update = () => {
@@ -38,6 +44,23 @@ function Modal(props:IModal){
 
     },[resize])
 
+    const handleNavigationStateChange = (navState: any) =>{
+        const Url = new URL(navState.url)
+        const searchParam = new URLSearchParams(Url.search)
+
+        if(searchParam.get('code') !== null){
+            dispatch(
+                settingSlice.actions.setRoseModal(false)
+            )
+
+            const tidalToken = searchParam.get('code') as string
+            postTidalLogin(tidalToken, dispatch, saveLocalData)
+
+            
+        }
+    }
+
+   
     return(
         <ModalLayOut
             animationType="fade"
@@ -62,13 +85,21 @@ function Modal(props:IModal){
                         Platform.OS === 'web' ? 
                             <iframe 
                                 src={TIDALURI}
-                                style={{"width": "100%", "height": "100%"}}
+                                style={{"width": "100%", "height": "100%", "border": "none"}}
                                 sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"
                             />
-                        : <WebView 
-                            style={{"width": "100%", "height": "100%"}}
-                            source={{"uri" : TIDALURI}}
-                        /> 
+                        : 
+                        <SafeAreaView style={styles.container}>
+                            <WebView 
+                                originWhitelist={['*']}
+                                style={styles.webview}
+                                source={{
+                                    uri : TIDALURI,
+                                    
+                                }}
+                                onNavigationStateChange={handleNavigationStateChange}
+                            /> 
+                        </SafeAreaView>
                         : null }
 
                     { entity === "rose" ?
@@ -99,7 +130,20 @@ const ModalLayout = styled.View<any>`
 
 const Cancle = styled.TouchableOpacity<Theme>`
     width: 30px;
-    height: 30px;
+    height: 50px;
     padding-top: 10px;
     padding-right: 10px;
 `
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+    webview: {
+      flex: 1,
+      width: windowWidth,
+      height: windowHeight,
+    },
+  });

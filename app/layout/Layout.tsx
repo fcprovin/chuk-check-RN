@@ -43,7 +43,7 @@ const LayOut = styled.View<Theme>`
     height: 100vh;
     display: flex;
     background-color: ${(props) => props.theme.color.baseBackGround};
-    padding-top: ${Platform.OS === 'ios' ? '0px' : `${Constants.statusBarHeight}px`};
+    padding-top: ${Platform.OS === 'web' ? '0px' : `${Constants.statusBarHeight}px`};
     flex: 1;
 `
 

@@ -7,7 +7,7 @@ import styled from "styled-components/native";
 import { Theme } from "../types/type";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store/reducers";
-import { ScrollView, View } from "react-native";
+import { Platform, ScrollView, View } from "react-native";
 import { NextIcon } from "../icons/sidebar/NextIcon";
 
 
@@ -52,7 +52,8 @@ const Btn = styled.View<Theme>`
     cursor: pointer;
     transition: all .4s;
     display: flex;
-    justify-content: center;
+    padding-top: ${Platform.OS === 'ios' ? "5px" : "0"};
+    justify-content:  ${Platform.OS === 'ios' ? "flex-start" : "center"};
     align-items: center;
     gap: 6px;
 `
@@ -63,6 +64,6 @@ const TouchView = styled.TouchableOpacity`
 
 const MenuText = styled.Text<Theme>`
     color: ${(props) => !props.hovered ? props.theme.color.textGray : props.theme.color.white};
-    font-size: 10px;
+    font-size: ${Platform.OS === 'ios' ? "8px" : "10px"};
 `
 

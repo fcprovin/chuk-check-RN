@@ -20,7 +20,7 @@ function Left(){
     const dispatch = useAppDispatch();
     const getPage = useSelector((state:RootState) => state.page);
     const setting = useSelector((state:RootState) => state.setting);
-   console.log(setting.hide)
+    
     return(
         <LeftContainer hideWidth={ setting.hide }>
             {setting.hide ?  <SmallWhiteLogo /> : <Logo width={'125px'}/>}

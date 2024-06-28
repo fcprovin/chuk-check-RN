@@ -8,6 +8,8 @@ import Hoverable from "react-native-hoverable";
 import { ELECTRONHEADERBTN } from "../constants/constants";
 import { Platform, Text } from "react-native";
 import settingSlice from "../redux/slices/setting";
+import RemoconModal from "../components/modal/RemoconModal";
+
 
 function Header() {
   const dispatch = useDispatch();
@@ -61,6 +63,7 @@ function Header() {
         <BtnBox>
             <Remocon width="18px" />
         </BtnBox>
+        <RemoconModal />
         {/* 일렉트론 일 경우 창 컨트롤 영역 */}
         {getOs.os === "electron" && winMacSet? 
            ELECTRONHEADERBTN.map( (data, idx) => (
@@ -121,6 +124,7 @@ const BtnBox = styled.TouchableOpacity<Theme>`
   /* 추가적인 스타일링 */
   background-color: ${(props) => (props.hovered ? props.hoverColor : "transparent")};
   -webkit-app-region: no-drag;
+  position: relative;
 `;
 
 const LeftBox = styled.View`

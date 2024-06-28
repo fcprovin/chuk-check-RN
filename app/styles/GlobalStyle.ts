@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 import { Theme } from "../types/type";
+import { Platform } from "react-native";
 
 
 export const MainConLayOut = styled.View`
@@ -38,16 +39,16 @@ export const LoginBtnBox = styled.TouchableOpacity<Theme>`
     width: ${(props) => props.inColor ? '90%' : '320px'};
     height: 43px;
     margin-top: 40px;
+    border: 1px solid ${(props) => props.theme.color.primaryColor};
+    border-radius: 20px;
 `
 
 export const LoginBtn = styled.Text<Theme>`
     font-weight: 600;
     font-size: ${(props) => props.theme.fontSize.Regular};
-    border: 1px solid ${(props) => props.theme.color.primaryColor};
-    border-radius: 20px;
     padding: 10px 0;
     color: ${(props) => props.inColor ? props.theme.color.white : props.theme.color.primaryColor};
     background-color:  ${(props) => props.inColor ? props.theme.color.primaryColor : "null"};
-    cursor: pointer;
+    ${Platform.OS !== 'ios' && `cursor: pointer;`}
     text-align: center;
 `

@@ -15,9 +15,11 @@ import styled from "styled-components/native";
 
 function Tidal(){
     const getModal = useSelector((state:RootState) => state.setting.modal)
+    const getTidal = useSelector((state:RootState) => state.user.tidal)
     const dispatch = useDispatch();
 
     return(
+        getTidal === null ?
         <View>
             <LoginLayout>
                 <TidalIcon width="180px" height="150px"/>
@@ -35,6 +37,9 @@ function Tidal(){
                 
             </LoginLayout>
             {getModal ? <Modal entity={"tidal"}  /> : null}
+        </View> :
+        <View>
+            <Text>로그인 완료</Text>
         </View>
     )
 }

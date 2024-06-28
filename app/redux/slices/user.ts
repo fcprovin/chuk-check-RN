@@ -2,7 +2,8 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   rose : null,
-  tidal: null
+  tidal: null,
+  tidalSession: null,
 };
 const userSlice = createSlice({
   name: 'user',
@@ -14,7 +15,11 @@ const userSlice = createSlice({
     setTidal(state, action) {
       state.tidal = action.payload;
     },
+    setTidalSession(state, action){
+      state.tidalSession = action.payload;
+    }
   },
 });
 
 export default userSlice;
+

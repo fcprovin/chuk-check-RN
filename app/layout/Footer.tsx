@@ -28,5 +28,5 @@ const ConTainer = styled.View<Theme>`
     bottom: 0;
     border-top-width: 0.5px;
     border-top-color: ${(props) => props.theme.color.textGray};
-    margin-bottom: ${Platform.OS !== 'web' ? "50px" : 0};
+    margin-bottom: ${Platform.OS !== 'web' ? Platform.OS  === 'ios' ? '85px' : "63px" : 0};
 `
