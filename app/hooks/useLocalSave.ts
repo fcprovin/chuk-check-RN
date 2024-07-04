@@ -11,27 +11,14 @@ interface ISave {
 }
 
 export const useLocalSave = () => {
-    const getOs = useSelector((state: RootState) => state.setting.os);
     const dispatch = useAppDispatch();
 
     const saveLocalData = async(props: ISave) => {
         const { data, type } = props;
 
-        
-            switch (getOs) {
-                case 'web':
-                    localStorage.setItem(type, JSON.stringify(data)); 
-                    break;
-                case 'electron':
-                    window.localStorage.setItem(type, JSON.stringify(data)); 
-                    break;
-                case 'android':
-                case 'ios':
-                    await AsyncStorage.setItem(type, JSON.stringify(data));
-                    break;
-                default:
-                    break;
-            }
+        await AsyncStorage.setItem(type, JSON.stringify(data));
+
+            
         
     };
 
@@ -39,24 +26,10 @@ export const useLocalSave = () => {
         const { type } = props;
         let getData = "" as string
 
-        switch (getOs) {
-            case 'web':
-                getData = localStorage.getItem(type) as string
+        getData = await AsyncStorage.getItem(type) as string
 
-                break;
-            case 'electron':
-                getData = window.localStorage.getItem(type) as string
-                break;
-            case 'android':
-            case 'ios':
-                getData = await AsyncStorage.getItem(type) as string
-                break;
-            default:
-                break;
-        }
-        
         if( getData !== ""){
-            dispatch(userSlice.actions.setRose(JSON.parse(getData)))
+            //dispatch(userSlice.actions.setRose(JSON.parse(getData)))
         }
 
     }

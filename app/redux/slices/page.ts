@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
   page : {
     current:{
-      "path" : "/home",
+      "path" : "/test1",
       "type" : "",
       "param1": "",
       "param2": "",

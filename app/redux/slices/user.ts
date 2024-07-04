@@ -1,23 +1,30 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  rose : null,
-  tidal: null,
-  tidalSession: null,
+  user : {
+    "memberId": 0,
+    "name": "",
+    "email": "",
+    "birthDate": "",
+    "createdDate": "",
+    "updatedDate": "",
+    "sns": {
+      "snsId": 0,
+      "uuid": "",
+      "type": "",
+      "createdDate": "",
+      "updatedDate": ""
+    }
+  }
 };
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setRose(state, action) {
-      state.rose = action.payload;
+    setUser(state, action) {
+      state.user = action.payload;
     },
-    setTidal(state, action) {
-      state.tidal = action.payload;
-    },
-    setTidalSession(state, action){
-      state.tidalSession = action.payload;
-    }
+
   },
 });
 

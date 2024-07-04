@@ -1,11 +1,10 @@
-### 🔖 Rose Connect RN  
+### 🔖 축첵 프로젝트 
 ---
 
 
 ### 🔖 Language
 ---
 node 18<br/>
-Electron<br/>
 TypScript<br/>
 Redux<br/>
 Redux-toolkit<br/>
@@ -32,24 +31,7 @@ npm install
 npm run start
 
 //expo 연동이 안될경우
-npx expo start --tunnel
+npm run tunnel
 
 //statusPageMiddleware.js 페이지 오류가 뜰 경우 해당 페이지 19번째 줄 process.cwd() => new URL(process.cwd())로 변경
 ```
-
-<b> electron 실행 </b> 
-```shell
-
-//react-native-web 빌드
-npx expo export --platform web
-
-// electron/dist/index.html에 절대경로를 상대경로로 수정 
-npm run electron
-
-//win exe 배포
-cd electron
-npm run electron:win
-
-```
-
-<br/>

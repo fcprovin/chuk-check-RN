@@ -32,8 +32,8 @@ export default TextInput;
 
 
 const Input = styled.TextInput<Theme>`
-    color: ${(props) => props.theme.color.white};
-    background-color: ${(props) => props.theme.color.baseBackGround};
+    color: ${(props) => props.theme.color.black};
+    background-color: #ffffff;
     width: 90%;
     height: 40px;
     font-size: ${(props) => props.theme.fontSize.small};

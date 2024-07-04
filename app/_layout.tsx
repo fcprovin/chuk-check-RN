@@ -8,7 +8,7 @@ import store, { useAppDispatch } from "./redux/store"
 import { theme } from "./styles/theme"
 import { ThemeProvider } from 'styled-components/native';
 import { StatusBar } from 'expo-status-bar';
-import RoseRoute from './index';
+import Route from './index';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -45,8 +45,8 @@ export default function RootLayout() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}> 
-          <StatusBar style="light" />
-          <RoseRoute />
+          <StatusBar style="dark" />
+          <Route />
       </ThemeProvider>
     </Provider>
   );

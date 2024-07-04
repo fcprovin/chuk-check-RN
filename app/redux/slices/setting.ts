@@ -1,24 +1,26 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {
-  os : '',
-  hide: false,
-  modal : false
+interface Itype{
+  modal:{
+    default : boolean
+  }
+}
+
+const initialState:Itype = {
+  modal : {
+    default : false
+  }
 };
 const settingSlice = createSlice({
   name: 'setting',
   initialState,
   reducers: {
-    setDeviceOs(state, action) {
-        state.os = action.payload.os;
-      },
-    setHideSide(state, action){
-      state.hide = action.payload.hide
+    setDefaultModal(state, action) {
+      state.modal.default = action.payload;
     },
-    setRoseModal(state, action){
-      state.modal = action.payload
-    },
+
   },
 });
 
 export default settingSlice;
+

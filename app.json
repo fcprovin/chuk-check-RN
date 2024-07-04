@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Roseconnect_RN",
-    "slug": "Roseconnect_RN",
+    "name": "frontend",
+    "slug": "frontend",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -23,7 +23,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.wanghsoo.Roseconnect_RN"
+      "package": "com.wanghsoo.frontend"
     },
     "web": {
       "bundler": "metro",
