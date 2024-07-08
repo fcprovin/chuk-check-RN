@@ -1,4 +1,4 @@
-
+//상수값 정리
 //MAKETEAM 
 const MAKETEAM = [
     {"text" : "팀 이름 설정" , "desc" : "팀 이름을 입력해 주세요."},

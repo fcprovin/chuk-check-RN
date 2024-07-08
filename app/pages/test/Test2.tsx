@@ -23,7 +23,7 @@ function Test2(){
 
                     }))}
                 >
-                    <CustomText customColor="#fff" customSize="14px" customBold={700}>Test1 페이지 전환</CustomText>
+                    <CustomText customColor="#fff" customFontSize="14px" customBold={700}>Test1 페이지 전환</CustomText>
                 </Btn>
         </View>
     )

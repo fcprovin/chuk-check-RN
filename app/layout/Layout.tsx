@@ -29,7 +29,7 @@ const Container = styled.View`
     background-color: #fff;
     display: flex;
     align-items: center;
-    padding-top: ${Platform.OS === 'web' ? '0px' : `${Constants.statusBarHeight}px`};
+    padding-top: ${Platform.OS === 'web' ? '0px' : `${Constants.statusBarHeight}px`}; 
     flex: 1;
 `
 

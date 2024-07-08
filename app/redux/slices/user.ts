@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
+//사용자 상태 관리
 const initialState = {
   user : {
     "memberId": 0,
@@ -18,9 +19,10 @@ const initialState = {
   }
 };
 const userSlice = createSlice({
-  name: 'user',
-  initialState,
+  name: 'user', // 상태관리 이름
+  initialState, //초기 값
   reducers: {
+    //상태를 변환해주는 함수
     setUser(state, action) {
       state.user = action.payload;
     },

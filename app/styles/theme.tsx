@@ -2,7 +2,7 @@ import { DefaultTheme } from "../types/type";
 
 
 
-
+//스타일 정의
 export const theme:DefaultTheme ={
     color : {
         "black" : "#111111",
