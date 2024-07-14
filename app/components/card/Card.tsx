@@ -7,7 +7,7 @@ import { Theme } from "@/app/types/type";
 
 interface ICard{
     entity: string; // team || match
-    background: string[]; // ['#FF00D2', '#FF2000'] || ["#000000"] || ["#E8E8E8",'#E8E8E8'] 
+    background: string[]; // ['#FF00D2', '#FF2000'] || ["#000000"] || ["#E8E8E8",'#E8E8E8'] || ["#767676", "#767676"]
     title: string; // 우리동네 FC || 우리동네FC : 풋러브UTD
     date?: string; //12월 10일 일요일
     league?: string; // 수원 아마추어 풋살 리그A

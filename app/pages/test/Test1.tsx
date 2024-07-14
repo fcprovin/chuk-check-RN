@@ -92,6 +92,16 @@ function Test1(){
                     <Card 
                         entity="match"
                         background={['#000000']}
+                        title="우리동네FC : 제인 로버스"
+                        date="12월 10일 일요일"
+                        type="매치까지 15일 남았어요"
+                        location="장소: 수원 종합 운동장 보조구장"
+                        time="20:00"
+                    />
+
+                    <Card 
+                        entity="match"
+                        background={["#767676", "#767676"]}
                         title="우리동네FC : 풋러브UTD"
                         date="12월 10일 일요일"
                         type="매치까지 9일 남았어요"
