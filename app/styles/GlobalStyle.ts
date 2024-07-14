@@ -5,6 +5,12 @@ import { Platform } from "react-native";
 // 공통 스타일 
 // 여러 페이지에서 사용하는 스타일만
 
+export const Scroll = styled.ScrollView`
+    width: 100%;
+    height: 100%;
+    padding: 10px 0 ;
+`
+
 export const MainConLayOut = styled.View`
     width: 100%;
     height: 100%;

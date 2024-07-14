@@ -6,17 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components/native"
 import TextInput from "../Input/TextInput";
 import { useState } from "react";
+import { Theme } from "@/app/types/type";
+import TeamCode from "./TeamCode";
 
 interface IModalProps{
-    title:string
-    closeBtnTitle: string
+    code:string
 }
 
 function DefaultModal(props:IModalProps){
-    const { title, closeBtnTitle} = props
-    const [value, setValue] = useState("");
+    const { code } = props
     const setting = useSelector((state:RootState) => state.setting.modal.default)
-    const dispatch = useDispatch()
 
     return(
         <ModalLayOut
@@ -25,30 +24,7 @@ function DefaultModal(props:IModalProps){
              visible={setting} //모달 페이지 표시 여부
         >
              <ModalLayout>
-                <ModalContent>
-
-                    <CustomText customColor="#111111" customFontSize="20px" customBold={700}>{title}</CustomText>
-                    
-                    <TextInput 
-                        placeHolder=""
-                        text={value}
-                        setText={setValue}
-                        password={false}
-                        width="296px"
-                        height="40px"
-                    />
-
-                    
-                    <Btn 
-                        customWidth="296px"
-                        customHeight="40px"
-                        onPress={() => dispatch(settingSlice.actions.setDefaultModal(false))}
-                        custombackGround="#333">
-                        <CustomText customColor="#fff" customFontSize="14px" customBold={700}>{closeBtnTitle}</CustomText>
-                    </Btn>
-
-
-                </ModalContent>
+                {code === "TeamCode" ? <TeamCode /> : null }
              </ModalLayout>
         </ModalLayOut>
     )
@@ -71,9 +47,9 @@ const  ModalLayout = styled.View`
     padding-top: 10%;
 `
 
-const ModalContent = styled.View`
-    width: 368px;
-    height: 202px;
+export const ModalContent = styled.View<Theme>`
+    width: ${(props) => props.customWidth};
+    height: ${(props) => props.customHeight};;
     background-color: #fff;
     border-radius: 10px;
     display: flex;
