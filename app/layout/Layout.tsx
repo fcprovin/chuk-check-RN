@@ -26,7 +26,7 @@ export default Layout;
 const Container = styled.View`
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #F7F7F7;;
     display: flex;
     align-items: center;
     padding-top: ${Platform.OS === 'web' ? '0px' : `${Constants.statusBarHeight}px`}; 

@@ -111,6 +111,16 @@ function Test1(){
 
                     <Card 
                         entity="team"
+                        background={['#fff','#fff']}
+                        title="우리동네FC"
+                        league="수원 아마추어 풋살 리그A"
+                        type=""
+                        team="멤버수: 21명 / 창단년도: 2023 / 연고지: 수원"
+                        pageMain={true}
+                    />
+
+                    <Card 
+                        entity="team"
                         background={['#000000']}
                         title="우리동네FC"
                         league="수원 아마추어 풋살 리그A"

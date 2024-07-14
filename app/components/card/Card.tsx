@@ -15,11 +15,12 @@ interface ICard{
     time?: string; // 킥오프 : 21:30
     team?:string; //멤버수: 21명 / 창단년도: 2023 / 연고지: 수원
     type?:string; //팀 가입 승인중 || 오늘의 매치 || 매치까지 9일 남았어요.
+    pageMain?: boolean;
 }
 
 
 function Card(props:ICard){
-    const { entity, background, title, date, league, location, time, team, type } = props;
+    const { entity, background, title, date, league, location, time, team, type, pageMain } = props;
 
     return(
         <Touch>
@@ -28,13 +29,13 @@ function Card(props:ICard){
 
 
                 <ContentLay>
-                    {entity === "team" ?<Image source={require("../../../assets/icons/test.png")}/> : null}
+                    {entity === "team" ?<ImageCon><Image source={require("../../../assets/icons/test.png")}/> </ImageCon>: null}
                     <CardContent boolean={entity === "team"}>
                         <Title>
                             {entity === "match" ? <CustomText  customColor="#fff" customFontSize="14px" customBold={700}>{date}</CustomText> : null}
-                            <CustomText  customColor={entity === "team" && type !== "" ? "#999999" : "#fff"} customFontSize="20px" customBold={700}>{title}</CustomText>
-                            {entity === "team" ? <CustomText  customColor={type !== "" ? "#999999" : "#fff"} customFontSize="10px" customBold={500}>{league}</CustomText> : null}
-                            {entity === "team" ? <CustomText  customColor={type !== "" ? "#999999" : "#fff"} customFontSize="10px" customBold={500}>{team}</CustomText> : null}
+                            <CustomText  customColor={entity === "team" && type !== "" ? "#999999" : pageMain ? "#111" : "#fff"} customFontSize="20px" customBold={700}>{title}</CustomText>
+                            {entity === "team" ? <CustomText  customColor={type !== "" ? "#999999" : pageMain ? "#505050" : "#fff"} customFontSize="10px" customBold={500}>{league}</CustomText> : null}
+                            {entity === "team" ? <CustomText  customColor={type !== "" ? "#999999" : pageMain ? "#767676" : "#fff"} customFontSize="10px" customBold={500}>{team}</CustomText> : null}
                         </Title>
 
                         {entity === "match" ?<CustomText  customColor="#fff" customFontSize="12px" customBold={400}>{ location }</CustomText> : null}
@@ -52,6 +53,8 @@ export default Card;
 const Touch = styled.TouchableOpacity`
     width: 368px;
     height: 150px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 `
 
 const Layout = styled(LinearGradient)`
@@ -83,4 +86,11 @@ const CardContent = styled.View<Theme>`
     display: flex;
     align-items: flex-start;
     gap: 3px;
+`
+
+const ImageCon = styled.View<Theme>`
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 `
