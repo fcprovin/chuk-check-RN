@@ -11,10 +11,16 @@ function Footer(){
 
 
     return(
-        <View>
+        <Dummny>
            
-        </View>
+        </Dummny>
     )
 }
 
 export default Footer;
+
+
+const Dummny = styled.View`
+    width: 100%;
+    height: 30px;
+`

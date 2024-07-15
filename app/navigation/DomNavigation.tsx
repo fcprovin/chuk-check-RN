@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/reducers';
 import Test1 from '../pages/test/Test1';
 import Test2 from '../pages/test/Test2';
+import Splash from '../pages/splash/Splash';
 
 
 
@@ -14,6 +15,7 @@ import Test2 from '../pages/test/Test2';
 const DomPath = [
     {"path": "/test1", "dom": <Test1 />},
     {"path": "/test2", "dom" : <Test2 />},
+    {"path": "/splash", "dom" : <Splash />}
 ]
 
 

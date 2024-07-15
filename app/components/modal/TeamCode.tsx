@@ -1,9 +1,9 @@
 import { RootState } from "@/app/redux/store/reducers";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { ModalContent } from "./DefaultModal";
+
 import TextInput from "../Input/TextInput";
-import { Btn, CustomText } from "@/app/styles/GlobalStyle";
+import { Btn, CustomText, ModalContent } from "@/app/styles/GlobalStyle";
 import settingSlice from "@/app/redux/slices/setting";
 
 

@@ -9,12 +9,12 @@ interface ICard{
     entity: string; // team || match
     background: string[]; // ['#FF00D2', '#FF2000'] || ["#000000"] || ["#E8E8E8",'#E8E8E8'] || ["#767676", "#767676"]
     title: string; // 우리동네 FC || 우리동네FC : 풋러브UTD
-    date?: string; //12월 10일 일요일
-    league?: string; // 수원 아마추어 풋살 리그A
-    location?: string; //장소 : 수원 종합 운동장 보조구장
-    time?: string; // 킥오프 : 21:30
-    team?:string; //멤버수: 21명 / 창단년도: 2023 / 연고지: 수원
-    type?:string; //팀 가입 승인중 || 오늘의 매치 || 매치까지 9일 남았어요.
+    date: string; //12월 10일 일요일
+    league: string; // 수원 아마추어 풋살 리그A
+    location: string; //장소 : 수원 종합 운동장 보조구장
+    time: string; // 킥오프 : 21:30
+    team:string; //멤버수: 21명 / 창단년도: 2023 / 연고지: 수원
+    type:string; //팀 가입 승인중 || 오늘의 매치 || 매치까지 9일 남았어요.
     pageMain?: boolean;
 }
 
@@ -29,7 +29,7 @@ function Card(props:ICard){
 
 
                 <ContentLay>
-                    {entity === "team" ?<ImageCon><Image source={require("../../../assets/icons/test.png")}/> </ImageCon>: null}
+                    {entity === "team" ? <Image source={require("../../../assets/icons/test.png")}/> : null}
                     <CardContent boolean={entity === "team"}>
                         <Title>
                             {entity === "match" ? <CustomText  customColor="#fff" customFontSize="14px" customBold={700}>{date}</CustomText> : null}
@@ -86,11 +86,4 @@ const CardContent = styled.View<Theme>`
     display: flex;
     align-items: flex-start;
     gap: 3px;
-`
-
-const ImageCon = styled.View<Theme>`
-    width: 80px;
-    height: 80px;
-    border-radius: 80px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 `

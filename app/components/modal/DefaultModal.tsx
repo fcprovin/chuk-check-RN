@@ -47,13 +47,3 @@ const  ModalLayout = styled.View`
     padding-top: 10%;
 `
 
-export const ModalContent = styled.View<Theme>`
-    width: ${(props) => props.customWidth};
-    height: ${(props) => props.customHeight};;
-    background-color: #fff;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-`

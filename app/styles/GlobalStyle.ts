@@ -8,7 +8,6 @@ import { Platform } from "react-native";
 export const Scroll = styled.ScrollView`
     width: 100%;
     height: 100%;
-    padding: 10px 0 ;
 `
 
 export const MainConLayOut = styled.View`
@@ -32,4 +31,15 @@ export const Btn = styled.TouchableOpacity<Theme>`
     align-items: center;
     justify-content: center;
     border: 1px solid ${(props) => props.customColor};
+`
+
+export const ModalContent = styled.View<Theme>`
+    width: ${(props) => props.customWidth};
+    height: ${(props) => props.customHeight};;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 `
