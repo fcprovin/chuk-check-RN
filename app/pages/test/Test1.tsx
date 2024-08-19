@@ -3,7 +3,7 @@ import { Theme } from "../../types/type";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store/reducers";
-import { Btn, CustomText, MainConLayOut, Scroll } from "../../styles/GlobalStyle";
+import { Btn, CustomText, MainConLayOut, Row, Scroll } from "../../styles/GlobalStyle";
 import React from "react";
 import DefaultModal from "@/app/components/modal/DefaultModal";
 import { Text } from "react-native";
@@ -11,11 +11,17 @@ import settingSlice from "@/app/redux/slices/setting";
 import pageSlice from "@/app/redux/slices/page";
 import TextInput from "@/app/components/Input/TextInput";
 import Card from "@/app/components/card/Card";
+import { usePage } from "@/app/hooks/usePage";
 
 function Test1() {
   // 상태 전달 함수
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
+
+  //page state 가져오기
+  const getPage = useSelector((state:RootState) => state.page.page.current)
+  //page 이동 및 history 저장
+  const { setSettingPage } = usePage();
 
   return (
     <Scroll>
@@ -23,8 +29,7 @@ function Test1() {
         <Container>
           <TextTest>테스트페이지</TextTest>
           <Btn
-            customWidth="368px"
-            customHeight="40px"
+            type="type1"
             custombackGround="#fff"
             customColor="#000"
             // onPress 클릭 이벤트
@@ -37,20 +42,14 @@ function Test1() {
           </Btn>
 
           <Btn
-            customWidth="178px"
-            customHeight="40px"
+           type="type2"
             custombackGround="#333"
             customColor="#333"
             onPress={() =>
-              dispatch(
-                pageSlice.actions.setCurrentPage({
-                  path: "/test2",
-                  type: "",
-                  param1: "",
-                  param2: "",
-                  param3: "",
-                })
-              )
+              setSettingPage({
+                path: "/test2",
+                path2: ""
+              })
             }
           >
             <CustomText customColor="#fff" customFontSize="14px" customBold={700}>
@@ -58,34 +57,34 @@ function Test1() {
             </CustomText>
           </Btn>
 
-          <Btn
-            customWidth="368px"
-            customHeight="40px"
-            custombackGround="#333"
-            customColor="#333"
-          >
-            <CustomText customColor="#fff" customFontSize="14px" customBold={700}>
-              버튼 예시
-            </CustomText>
-          </Btn>
+          <Row style={{justifyContent: "space-between"}}>
+            <Btn
+              type="type2"
+              custombackGround="#333"
+              customColor="#333"
+            >
+              <CustomText customColor="#fff" customFontSize="14px" customBold={700}>
+                버튼 예시
+              </CustomText>
+            </Btn>
 
-          <Btn
-            customWidth="178px"
-            customHeight="40px"
-            custombackGround="#fff"
-            customColor="#000"
-          >
-            <CustomText customColor="#333" customFontSize="14px" customBold={700}>
-              버튼 예시
-            </CustomText>
-          </Btn>
+            <Btn
+              type="type2"
+              custombackGround="#fff"
+              customColor="#000"
+            >
+              <CustomText customColor="#333" customFontSize="14px" customBold={700}>
+                버튼 예시
+              </CustomText>
+            </Btn>
+          </Row>
 
           <TextInput
             placeHolder="텍스트 Input 예시"
             text={value}
             setText={setValue}
             password={false}
-            width="368px"
+            type="type2"
             height="40px"
           />
 

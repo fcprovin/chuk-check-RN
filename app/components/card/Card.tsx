@@ -51,14 +51,14 @@ function Card(props:ICard){
 export default Card;
 
 const Touch = styled.TouchableOpacity`
-    width: 368px;
+    width: 100%;
     height: 150px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 `
 
 const Layout = styled(LinearGradient)`
-    width: 368px;
+    width: 100%;
     height: 150px;
     background-color: #000000;
     border-radius: 10px;

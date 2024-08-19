@@ -10,6 +10,8 @@ export interface Theme{
     customWidth?: string
     customHeight?:string
 
+    type?:string 
+
     boolean?: boolean
 }
 

@@ -5,10 +5,12 @@ import Footer from "./Footer";
 import DomNavigation from "../navigation/DomNavigation"
 import styled from "styled-components/native";
 import { Theme } from "../types/type"
-import { Platform, View } from "react-native";
+import { Dimensions, Platform, View } from "react-native";
 import Constants from 'expo-constants';
 import Left from "./Left";
 
+const chartHeight = Dimensions.get('window').height;
+const chartWidth = Dimensions.get('window').width;
 
 function Layout(){
 
@@ -24,8 +26,8 @@ function Layout(){
 export default Layout;
 
 const Container = styled.View`
-    width: 100%;
-    height: 100%;
+    width: ${`${Math.ceil(chartWidth)}px`};
+    height: ${`${Math.ceil(chartHeight)}px`};
     gap: 10px;
     background-color: #F7F7F7;;
     display: flex;

@@ -8,12 +8,12 @@ interface IInput{
     text : string
     setText : React.Dispatch<React.SetStateAction<string>>
     password: boolean
-    width: string
+    type: string
     height: string
 }
 
 function TextInput(props:IInput){
-    const { placeHolder, text, setText, password, width, height } = props
+    const { placeHolder, text, setText, password, type, height } = props
 
     const onChangeText = (inputText:string) => {
         setText(inputText)
@@ -26,7 +26,7 @@ function TextInput(props:IInput){
             onChangeText={onChangeText}
             placeholderTextColor={'#919191'}
             secureTextEntry={password} 
-            customWidth={width}
+            type={type}
             customHeight={height}
         />
     )
@@ -38,7 +38,7 @@ export default TextInput;
 const Input = styled.TextInput<Theme>`
     color: ${(props) => props.theme.color.black};
     background-color: #f4f4f4;
-    width: ${(props) => props.customWidth};
+    width: ${(props) => props.type === "type1" ? "100%" : "48%"};
     height: ${(props) => props.customHeight};
     font-size: 12px;
     padding: 13px 12.5px;

@@ -23,8 +23,8 @@ export const CustomText = styled.Text<Theme>`
 `
 
 export const Btn = styled.TouchableOpacity<Theme>`
-    width: ${(props) => props.customWidth};
-    height: ${(props) => props.customHeight};
+    width: ${(props) => props.type === "type1" ? "100%" : "48%"};
+    height: 40px;
     background-color: ${(props) => props.custombackGround};
     border-radius: 10px;
     display: flex;
@@ -42,4 +42,11 @@ export const ModalContent = styled.View<Theme>`
     align-items: center;
     justify-content: center;
     gap: 10px;
+`
+
+export const Row = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 `
