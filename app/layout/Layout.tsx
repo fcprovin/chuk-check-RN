@@ -18,7 +18,9 @@ function Layout(){
     return(
         <Container>
             <Header />
-            <DomNavigation />
+            <Content>
+                <DomNavigation />
+            </Content>
         </Container>
     )
 }
@@ -29,12 +31,18 @@ const Container = styled.View`
     width: ${`${Math.ceil(chartWidth)}px`};
     height: ${`${Math.ceil(chartHeight)}px`};
     gap: 10px;
-    background-color: #F7F7F7;;
+    background-color: #fff;;
     display: flex;
     align-items: center;
     padding-top: ${Platform.OS === 'web' ? '0px' : `${Constants.statusBarHeight}px`}; 
     flex: 1;
 `
+
+const Content = styled.View`
+    width: 100%;
+    flex: 1;
+`
+
 
 
 

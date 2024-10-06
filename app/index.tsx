@@ -8,10 +8,13 @@ import { useAppDispatch } from "./redux/store"
 import { useLocalSave } from "./hooks/useLocalSave";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/store/reducers";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from "@react-navigation/native";
+import Splash from "./pages/splash/Splash";
+import Login from "./pages/login/Login";
 
 
-
-
+const Stack = createNativeStackNavigator();
 function RoseRoute(){
     const dispatch = useAppDispatch();
     const { getLocalData } = useLocalSave();
@@ -19,16 +22,13 @@ function RoseRoute(){
 
 
   return(
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}/>
-        <Route path="*" element={
-          <View>
-            <Text>에러페이지</Text>
-          </View>
-        } />
-      </Routes>
-    </Router>
+    <NavigationContainer  independent={true}>
+      <Stack.Navigator initialRouteName='splash'  screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="splash" component={Splash}/>
+        <Stack.Screen name="layout" component={Layout}/>
+        <Stack.Screen name="Login" component={Login}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 

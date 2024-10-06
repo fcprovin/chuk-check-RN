@@ -16,7 +16,7 @@ function sleep(ms:number) {
 }
  
 
-export default function Splash(){
+export default function Splash({ navigation }: { navigation: any }){
     const dispatch = useDispatch();
 
     async function delay_splash() {
@@ -24,9 +24,19 @@ export default function Splash(){
         await sleep(3000);
         await SplashScreen.hideAsync();
         dispatch(pageSlice.actions.setCurrentPage({
-            "path": "/test1"
+            "path": "Login"
         }))
     }
+
+    useEffect(() => {
+      // 3초 후 자동으로 Test1 화면으로 이동
+      const timer = setTimeout(() => {
+        navigation.replace('Login');  // replace는 현재 스택을 대체함
+      }, 3000); // 3000ms = 3초
+      
+      // 컴포넌트 언마운트 시 타이머 정리
+      return () => clearTimeout(timer);
+    }, [navigation]);
 
     useEffect(() => {
         delay_splash()

@@ -27,4 +27,5 @@ const Layout = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: #fff;
 `

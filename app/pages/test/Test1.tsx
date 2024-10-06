@@ -11,17 +11,14 @@ import settingSlice from "@/app/redux/slices/setting";
 import pageSlice from "@/app/redux/slices/page";
 import TextInput from "@/app/components/Input/TextInput";
 import Card from "@/app/components/card/Card";
-import { usePage } from "@/app/hooks/usePage";
 
-function Test1() {
+function Test1({ navigation }: { navigation: any }) {
   // 상태 전달 함수
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
   //page state 가져오기
   const getPage = useSelector((state:RootState) => state.page.page.current)
-  //page 이동 및 history 저장
-  const { setSettingPage } = usePage();
 
   return (
     <Scroll>
@@ -46,10 +43,7 @@ function Test1() {
             custombackGround="#333"
             customColor="#333"
             onPress={() =>
-              setSettingPage({
-                path: "/test2",
-                path2: ""
-              })
+              navigation.navigate('Test2')
             }
           >
             <CustomText customColor="#fff" customFontSize="14px" customBold={700}>
@@ -166,6 +160,23 @@ function Test1() {
         </Container>
 
         <DefaultModal code="TeamCode" />
+
+        <Btn
+           type="type2"
+            custombackGround="#333"
+            customColor="#333"
+            onPress={() =>
+              // setSettingPage({
+              //   path: "/test2",
+              //   path2: ""
+              // })
+              navigation.navigate('Test2')
+            }
+          >
+            <CustomText customColor="#fff" customFontSize="14px" customBold={700}>
+              Test2 페이지 전환
+            </CustomText>
+          </Btn>
       </MainConLayOut>
     </Scroll>
   );

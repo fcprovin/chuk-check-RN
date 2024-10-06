@@ -7,37 +7,24 @@ import { RootState } from '../redux/store/reducers';
 import Test1 from '../pages/test/Test1';
 import Test2 from '../pages/test/Test2';
 import Splash from '../pages/splash/Splash';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 
-//Path 및 페이지 정의
-//현재 페이지 상태와 동일한 DomPath 항목을 화면에 보여줌
-const DomPath = [
-    {"path": "/test1", "dom": <Test1 />},
-    {"path": "/test2", "dom" : <Test2 />},
-    {"path": "/splash", "dom" : <Splash />}
-]
 
+const Stack = createNativeStackNavigator();
 
 const DomNavigation = () => {
-    const current = useSelector((state:RootState) => state.page)
 
-    try{
-        const matchItem = DomPath.find((item) => item.path === current.page.current.path ? item.dom : null)
-        
-        if(matchItem){
-            return matchItem.dom
-        }else{
-            return  (     
-            <View>
-                <Text>Not Found</Text>
-            </View>)
-        }
-    }catch{
-        <View>
-            <Text>에러페이지</Text>
-        </View>
-    }
+    return(
+        <NavigationContainer  independent={true}>
+            <Stack.Navigator initialRouteName='Test1'  screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Test1" component={Test1}/>
+            <Stack.Screen name="Test2" component={Test2}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
 
 }
 
